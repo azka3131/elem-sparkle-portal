@@ -10,9 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TeachersRouteImport } from './routes/teachers'
-import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as PpdbRouteImport } from './routes/ppdb'
-import { Route as NewsRouteImport } from './routes/news'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as AchievementsRouteImport } from './routes/achievements'
@@ -23,19 +21,9 @@ const TeachersRoute = TeachersRouteImport.update({
   path: '/teachers',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ProfileRoute = ProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PpdbRoute = PpdbRouteImport.update({
   id: '/ppdb',
   path: '/ppdb',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -64,9 +52,7 @@ export interface FileRoutesByFullPath {
   '/achievements': typeof AchievementsRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
-  '/news': typeof NewsRoute
   '/ppdb': typeof PpdbRoute
-  '/profile': typeof ProfileRoute
   '/teachers': typeof TeachersRoute
 }
 export interface FileRoutesByTo {
@@ -74,9 +60,7 @@ export interface FileRoutesByTo {
   '/achievements': typeof AchievementsRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
-  '/news': typeof NewsRoute
   '/ppdb': typeof PpdbRoute
-  '/profile': typeof ProfileRoute
   '/teachers': typeof TeachersRoute
 }
 export interface FileRoutesById {
@@ -85,9 +69,7 @@ export interface FileRoutesById {
   '/achievements': typeof AchievementsRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
-  '/news': typeof NewsRoute
   '/ppdb': typeof PpdbRoute
-  '/profile': typeof ProfileRoute
   '/teachers': typeof TeachersRoute
 }
 export interface FileRouteTypes {
@@ -97,29 +79,17 @@ export interface FileRouteTypes {
     | '/achievements'
     | '/facilities'
     | '/gallery'
-    | '/news'
     | '/ppdb'
-    | '/profile'
     | '/teachers'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/achievements'
-    | '/facilities'
-    | '/gallery'
-    | '/news'
-    | '/ppdb'
-    | '/profile'
-    | '/teachers'
+  to: '/' | '/achievements' | '/facilities' | '/gallery' | '/ppdb' | '/teachers'
   id:
     | '__root__'
     | '/'
     | '/achievements'
     | '/facilities'
     | '/gallery'
-    | '/news'
     | '/ppdb'
-    | '/profile'
     | '/teachers'
   fileRoutesById: FileRoutesById
 }
@@ -128,9 +98,7 @@ export interface RootRouteChildren {
   AchievementsRoute: typeof AchievementsRoute
   FacilitiesRoute: typeof FacilitiesRoute
   GalleryRoute: typeof GalleryRoute
-  NewsRoute: typeof NewsRoute
   PpdbRoute: typeof PpdbRoute
-  ProfileRoute: typeof ProfileRoute
   TeachersRoute: typeof TeachersRoute
 }
 
@@ -143,25 +111,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TeachersRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/profile': {
-      id: '/profile'
-      path: '/profile'
-      fullPath: '/profile'
-      preLoaderRoute: typeof ProfileRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/ppdb': {
       id: '/ppdb'
       path: '/ppdb'
       fullPath: '/ppdb'
       preLoaderRoute: typeof PpdbRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -200,21 +154,9 @@ const rootRouteChildren: RootRouteChildren = {
   AchievementsRoute: AchievementsRoute,
   FacilitiesRoute: FacilitiesRoute,
   GalleryRoute: GalleryRoute,
-  NewsRoute: NewsRoute,
   PpdbRoute: PpdbRoute,
-  ProfileRoute: ProfileRoute,
   TeachersRoute: TeachersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

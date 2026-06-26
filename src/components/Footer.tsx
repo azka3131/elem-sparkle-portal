@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Facebook, Instagram, Youtube, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import logo from "@/assets/school-logo.png";
-import { NAV_LINKS, SCHOOL } from "@/lib/data";
+import { FOOTER_LINKS, SCHOOL } from "@/lib/data";
 
 export function Footer() {
   return (
@@ -12,13 +12,15 @@ export function Footer() {
             <img src={logo} alt="Logo" className="h-10 w-10" width={40} height={40} />
             <span className="font-display font-bold text-primary">{SCHOOL.name}</span>
           </div>
-          <p className="mt-3 text-sm text-muted-foreground">{SCHOOL.tagline}</p>
+          <p className="mt-3 text-sm text-muted-foreground">
+            Sekolah dasar modern yang menumbuhkan rasa ingin tahu, karakter, dan kreativitas setiap anak sejak dini.
+          </p>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold text-foreground">Navigasi</h4>
-          <ul className="mt-3 space-y-2 text-sm">
-            {NAV_LINKS.map((l) => (
+          <h4 className="text-sm font-semibold text-foreground">Navigasi Cepat</h4>
+          <ul className="mt-3 grid grid-cols-2 gap-y-2 text-sm">
+            {FOOTER_LINKS.map((l) => (
               <li key={l.to}>
                 <Link to={l.to} className="text-muted-foreground hover:text-primary">{l.label}</Link>
               </li>
