@@ -13,8 +13,14 @@ import { Route as TeachersRouteImport } from './routes/teachers'
 import { Route as PpdbRouteImport } from './routes/ppdb'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProfileVisionRouteImport } from './routes/profile.vision'
+import { Route as ProfileStructureRouteImport } from './routes/profile.structure'
+import { Route as ProfileHistoryRouteImport } from './routes/profile.history'
+import { Route as NewsSchoolRouteImport } from './routes/news.school'
+import { Route as NewsAnnouncementsRouteImport } from './routes/news.announcements'
 
 const TeachersRoute = TeachersRouteImport.update({
   id: '/teachers',
@@ -36,6 +42,11 @@ const FacilitiesRoute = FacilitiesRouteImport.update({
   path: '/facilities',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AchievementsRoute = AchievementsRouteImport.update({
   id: '/achievements',
   path: '/achievements',
@@ -46,60 +57,133 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileVisionRoute = ProfileVisionRouteImport.update({
+  id: '/profile/vision',
+  path: '/profile/vision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileStructureRoute = ProfileStructureRouteImport.update({
+  id: '/profile/structure',
+  path: '/profile/structure',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileHistoryRoute = ProfileHistoryRouteImport.update({
+  id: '/profile/history',
+  path: '/profile/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsSchoolRoute = NewsSchoolRouteImport.update({
+  id: '/news/school',
+  path: '/news/school',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsAnnouncementsRoute = NewsAnnouncementsRouteImport.update({
+  id: '/news/announcements',
+  path: '/news/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
+  '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/news/announcements': typeof NewsAnnouncementsRoute
+  '/news/school': typeof NewsSchoolRoute
+  '/profile/history': typeof ProfileHistoryRoute
+  '/profile/structure': typeof ProfileStructureRoute
+  '/profile/vision': typeof ProfileVisionRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
+  '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/news/announcements': typeof NewsAnnouncementsRoute
+  '/news/school': typeof NewsSchoolRoute
+  '/profile/history': typeof ProfileHistoryRoute
+  '/profile/structure': typeof ProfileStructureRoute
+  '/profile/vision': typeof ProfileVisionRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
+  '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/news/announcements': typeof NewsAnnouncementsRoute
+  '/news/school': typeof NewsSchoolRoute
+  '/profile/history': typeof ProfileHistoryRoute
+  '/profile/structure': typeof ProfileStructureRoute
+  '/profile/vision': typeof ProfileVisionRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/achievements'
+    | '/contact'
     | '/facilities'
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/news/announcements'
+    | '/news/school'
+    | '/profile/history'
+    | '/profile/structure'
+    | '/profile/vision'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/achievements' | '/facilities' | '/gallery' | '/ppdb' | '/teachers'
+  to:
+    | '/'
+    | '/achievements'
+    | '/contact'
+    | '/facilities'
+    | '/gallery'
+    | '/ppdb'
+    | '/teachers'
+    | '/news/announcements'
+    | '/news/school'
+    | '/profile/history'
+    | '/profile/structure'
+    | '/profile/vision'
   id:
     | '__root__'
     | '/'
     | '/achievements'
+    | '/contact'
     | '/facilities'
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/news/announcements'
+    | '/news/school'
+    | '/profile/history'
+    | '/profile/structure'
+    | '/profile/vision'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AchievementsRoute: typeof AchievementsRoute
+  ContactRoute: typeof ContactRoute
   FacilitiesRoute: typeof FacilitiesRoute
   GalleryRoute: typeof GalleryRoute
   PpdbRoute: typeof PpdbRoute
   TeachersRoute: typeof TeachersRoute
+  NewsAnnouncementsRoute: typeof NewsAnnouncementsRoute
+  NewsSchoolRoute: typeof NewsSchoolRoute
+  ProfileHistoryRoute: typeof ProfileHistoryRoute
+  ProfileStructureRoute: typeof ProfileStructureRoute
+  ProfileVisionRoute: typeof ProfileVisionRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -132,6 +216,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FacilitiesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/achievements': {
       id: '/achievements'
       path: '/achievements'
@@ -146,16 +237,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile/vision': {
+      id: '/profile/vision'
+      path: '/profile/vision'
+      fullPath: '/profile/vision'
+      preLoaderRoute: typeof ProfileVisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/structure': {
+      id: '/profile/structure'
+      path: '/profile/structure'
+      fullPath: '/profile/structure'
+      preLoaderRoute: typeof ProfileStructureRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile/history': {
+      id: '/profile/history'
+      path: '/profile/history'
+      fullPath: '/profile/history'
+      preLoaderRoute: typeof ProfileHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/school': {
+      id: '/news/school'
+      path: '/news/school'
+      fullPath: '/news/school'
+      preLoaderRoute: typeof NewsSchoolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/announcements': {
+      id: '/news/announcements'
+      path: '/news/announcements'
+      fullPath: '/news/announcements'
+      preLoaderRoute: typeof NewsAnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AchievementsRoute: AchievementsRoute,
+  ContactRoute: ContactRoute,
   FacilitiesRoute: FacilitiesRoute,
   GalleryRoute: GalleryRoute,
   PpdbRoute: PpdbRoute,
   TeachersRoute: TeachersRoute,
+  NewsAnnouncementsRoute: NewsAnnouncementsRoute,
+  NewsSchoolRoute: NewsSchoolRoute,
+  ProfileHistoryRoute: ProfileHistoryRoute,
+  ProfileStructureRoute: ProfileStructureRoute,
+  ProfileVisionRoute: ProfileVisionRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
