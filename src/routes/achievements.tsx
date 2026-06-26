@@ -18,14 +18,27 @@ export const Route = createFileRoute("/achievements")({
 function Achievements() {
   return (
     <>
-      <PageHeader title="Prestasi" subtitle="Buah dari kerja keras siswa, guru, dan dukungan orang tua." />
+      <PageHeader
+        title="Prestasi"
+        subtitle="Buah dari kerja keras siswa, guru, dan dukungan orang tua."
+      />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {ACHIEVEMENTS.map((a) => (
-            <Card key={a.title} className="group overflow-hidden border-border/60 pt-0 transition-shadow hover:shadow-[var(--shadow-card)]">
+            <Card
+              key={a.title}
+              className="group overflow-hidden border-border/60 pt-0 transition-shadow hover:shadow-[var(--shadow-card)]"
+            >
               <div className="relative aspect-[16/10] overflow-hidden">
-                <img src={a.image} alt={a.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <Badge className="absolute left-3 top-3 bg-primary text-primary-foreground">{a.year}</Badge>
+                <img
+                  src={a.image}
+                  alt={a.title}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+                <Badge className="absolute left-3 top-3 bg-primary text-primary-foreground">
+                  {a.year}
+                </Badge>
               </div>
               <CardContent className="p-5">
                 <div className="flex items-start gap-3">

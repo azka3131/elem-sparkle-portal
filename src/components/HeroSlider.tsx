@@ -101,7 +101,9 @@ export function HeroSlider({ slides, intervalMs = 3000, children }: Props) {
                 onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
                 className={`h-2.5 rounded-full transition-all ${
-                  i === index ? "w-8 bg-primary-foreground" : "w-2.5 bg-primary-foreground/50 hover:bg-primary-foreground/80"
+                  i === index
+                    ? "w-8 bg-primary-foreground"
+                    : "w-2.5 bg-primary-foreground/50 hover:bg-primary-foreground/80"
                 }`}
               />
             ))}

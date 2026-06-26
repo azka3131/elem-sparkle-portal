@@ -15,7 +15,10 @@ export const Route = createFileRoute("/profile/structure")({
 function Structure() {
   return (
     <>
-      <PageHeader title="Struktur Organisasi" subtitle="Susunan kepemimpinan dan tata kelola sekolah." />
+      <PageHeader
+        title="Struktur Organisasi"
+        subtitle="Susunan kepemimpinan dan tata kelola sekolah."
+      />
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
         {/* Large image placeholder — replaceable by admin later. */}
         <div className="overflow-hidden rounded-3xl border-2 border-dashed border-border bg-secondary/50 shadow-[var(--shadow-card)]">
@@ -25,7 +28,8 @@ function Structure() {
             </div>
             <p className="text-lg font-semibold text-foreground">Bagan Struktur Organisasi</p>
             <p className="max-w-md text-sm text-muted-foreground">
-              Placeholder gambar — administrator akan dapat mengunggah dan mengganti bagan struktur organisasi sekolah melalui dasbor admin.
+              Placeholder gambar — administrator akan dapat mengunggah dan mengganti bagan struktur
+              organisasi sekolah melalui dasbor admin.
             </p>
           </div>
         </div>

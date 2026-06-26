@@ -7,7 +7,10 @@ export const Route = createFileRoute("/news/school")({
   head: () => ({
     meta: [
       { title: "Berita Sekolah — SD Cendekia Harapan" },
-      { name: "description", content: "Kegiatan dan kabar terbaru dari komunitas SD Cendekia Harapan." },
+      {
+        name: "description",
+        content: "Kegiatan dan kabar terbaru dari komunitas SD Cendekia Harapan.",
+      },
     ],
   }),
   component: SchoolNews,
@@ -16,7 +19,10 @@ export const Route = createFileRoute("/news/school")({
 function SchoolNews() {
   return (
     <>
-      <PageHeader title="Berita Sekolah" subtitle="Ikuti cerita dan kabar terbaru dari komunitas kami." />
+      <PageHeader
+        title="Berita Sekolah"
+        subtitle="Ikuti cerita dan kabar terbaru dari komunitas kami."
+      />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <NewsGrid items={SCHOOL_NEWS} />
       </section>

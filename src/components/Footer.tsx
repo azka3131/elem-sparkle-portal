@@ -13,7 +13,8 @@ export function Footer() {
             <span className="font-display font-bold text-primary">{SCHOOL.name}</span>
           </div>
           <p className="mt-3 text-sm text-muted-foreground">
-            Sekolah dasar modern yang menumbuhkan rasa ingin tahu, karakter, dan kreativitas setiap anak sejak dini.
+            Sekolah dasar modern yang menumbuhkan rasa ingin tahu, karakter, dan kreativitas setiap
+            anak sejak dini.
           </p>
         </div>
 
@@ -22,7 +23,9 @@ export function Footer() {
           <ul className="mt-3 grid grid-cols-2 gap-y-2 text-sm">
             {FOOTER_LINKS.map((l) => (
               <li key={l.to}>
-                <Link to={l.to} className="text-muted-foreground hover:text-primary">{l.label}</Link>
+                <Link to={l.to} className="text-muted-foreground hover:text-primary">
+                  {l.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -31,9 +34,18 @@ export function Footer() {
         <div>
           <h4 className="text-sm font-semibold text-foreground">Kontak</h4>
           <ul className="mt-3 space-y-3 text-sm text-muted-foreground">
-            <li className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>{SCHOOL.address}</span></li>
-            <li className="flex items-start gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>{SCHOOL.phone}</span></li>
-            <li className="flex items-start gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" /><span>{SCHOOL.email}</span></li>
+            <li className="flex items-start gap-2">
+              <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>{SCHOOL.address}</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>{SCHOOL.phone}</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+              <span>{SCHOOL.email}</span>
+            </li>
           </ul>
         </div>
 

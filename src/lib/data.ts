@@ -14,29 +14,25 @@ export const SCHOOL = {
 export const HERO_SLIDES = [
   {
     id: 1,
-    image:
-      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=80",
+    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=80",
     title: "Selamat Datang di SD Cendekia Harapan",
     subtitle: "Cerdas, Berkarakter, Berprestasi",
   },
   {
     id: 2,
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80",
     title: "Belajar dengan Penuh Semangat",
     subtitle: "Lingkungan ramah anak yang menumbuhkan rasa ingin tahu.",
   },
   {
     id: 3,
-    image:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1920&q=80",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1920&q=80",
     title: "Membangun Generasi Masa Depan",
     subtitle: "Pendidikan karakter berlandaskan nilai luhur bangsa.",
   },
   {
     id: 4,
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80",
     title: "Pendaftaran Siswa Baru Dibuka",
     subtitle: "Bergabunglah bersama keluarga besar kami tahun ini.",
   },
@@ -92,8 +88,7 @@ const NEWS_DATA = [
     type: "news" as const,
     excerpt:
       "Tim sains SD Cendekia Harapan meraih juara umum dalam Olimpiade Sains Nasional tingkat provinsi tahun ini.",
-    image:
-      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
   },
   {
     id: 2,
@@ -103,8 +98,7 @@ const NEWS_DATA = [
     type: "news" as const,
     excerpt:
       "Sepekan penuh kegiatan membaca, mendongeng, dan bertemu penulis cilik favorit siswa-siswi kami.",
-    image:
-      "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
   },
   {
     id: 3,
@@ -114,8 +108,7 @@ const NEWS_DATA = [
     type: "announcement" as const,
     excerpt:
       "PPDB tahun ajaran 2026/2027 resmi dibuka. Daftarkan putra-putri Anda untuk bergabung bersama kami.",
-    image:
-      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
   },
   {
     id: 4,
@@ -125,8 +118,7 @@ const NEWS_DATA = [
     type: "news" as const,
     excerpt:
       "Siswa kelas 5 belajar sejarah secara langsung melalui kunjungan ke Museum Nasional Indonesia.",
-    image:
-      "https://images.unsplash.com/photo-1605007493699-af65834f8a00?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1605007493699-af65834f8a00?w=800&q=80",
   },
   {
     id: 5,
@@ -134,10 +126,8 @@ const NEWS_DATA = [
     date: "15 Mei 2026",
     category: "Program",
     type: "news" as const,
-    excerpt:
-      "Inisiatif ramah lingkungan baru untuk membentuk karakter peduli alam sejak dini.",
-    image:
-      "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80",
+    excerpt: "Inisiatif ramah lingkungan baru untuk membentuk karakter peduli alam sejak dini.",
+    image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80",
   },
   {
     id: 6,
@@ -147,8 +137,7 @@ const NEWS_DATA = [
     type: "news" as const,
     excerpt:
       "Sesi diskusi bersama orang tua mengenai tumbuh kembang dan pendidikan emosional anak.",
-    image:
-      "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
   },
   {
     id: 7,
@@ -158,8 +147,7 @@ const NEWS_DATA = [
     type: "announcement" as const,
     excerpt:
       "Sekolah akan libur selama satu minggu. Pembelajaran daring akan diberikan untuk pekan berikutnya.",
-    image:
-      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
   },
   {
     id: 8,
@@ -169,8 +157,7 @@ const NEWS_DATA = [
     type: "announcement" as const,
     excerpt:
       "Diharapkan kehadiran seluruh orang tua/wali murid pada rapat semester genap di aula sekolah.",
-    image:
-      "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
   },
 ];
 
@@ -384,7 +371,6 @@ export const NAV_ITEMS: NavItem[] = [
   { to: "/gallery", label: "Galeri" },
   { to: "/achievements", label: "Prestasi" },
   { to: "/facilities", label: "Fasilitas" },
-  { to: "/contact", label: "Kontak" },
 ];
 
 // Flat list of routes for the footer "quick links" section.
@@ -398,5 +384,4 @@ export const FOOTER_LINKS: NavChild[] = [
   { to: "/gallery", label: "Galeri" },
   { to: "/achievements", label: "Prestasi" },
   { to: "/facilities", label: "Fasilitas" },
-  { to: "/contact", label: "Kontak" },
 ];

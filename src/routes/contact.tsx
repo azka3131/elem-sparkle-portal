@@ -14,7 +14,10 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Kontak — SD Cendekia Harapan" },
-      { name: "description", content: "Hubungi SD Cendekia Harapan untuk informasi, kunjungan, atau pendaftaran." },
+      {
+        name: "description",
+        content: "Hubungi SD Cendekia Harapan untuk informasi, kunjungan, atau pendaftaran.",
+      },
     ],
   }),
   component: Contact,
@@ -39,14 +42,19 @@ function Contact() {
 
   return (
     <>
-      <PageHeader title="Hubungi Kami" subtitle="Kami senang mendengar dari Anda — kirimkan pesan kapan saja." />
+      <PageHeader
+        title="Hubungi Kami"
+        subtitle="Kami senang mendengar dari Anda — kirimkan pesan kapan saja."
+      />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-2">
           {/* Left: form */}
           <Card className="border-border/60 shadow-[var(--shadow-card)]">
             <CardContent className="p-6 sm:p-8">
               <h2 className="text-xl font-bold">Kirim Pesan</h2>
-              <p className="mt-1 text-sm text-muted-foreground">Isi formulir di bawah ini dan tim kami akan segera merespons.</p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Isi formulir di bawah ini dan tim kami akan segera merespons.
+              </p>
               <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Nama Lengkap</Label>

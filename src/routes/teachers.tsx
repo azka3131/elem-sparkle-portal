@@ -16,13 +16,24 @@ export const Route = createFileRoute("/teachers")({
 function Teachers() {
   return (
     <>
-      <PageHeader title="Guru & Staf" subtitle="Pendidik berdedikasi yang menjadikan setiap hari di sekolah bermakna." />
+      <PageHeader
+        title="Guru & Staf"
+        subtitle="Pendidik berdedikasi yang menjadikan setiap hari di sekolah bermakna."
+      />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {TEACHERS.map((t) => (
-            <Card key={t.name} className="overflow-hidden border-border/60 pt-0 transition-shadow hover:shadow-[var(--shadow-card)]">
+            <Card
+              key={t.name}
+              className="overflow-hidden border-border/60 pt-0 transition-shadow hover:shadow-[var(--shadow-card)]"
+            >
               <div className="aspect-square overflow-hidden bg-secondary">
-                <img src={t.photo} alt={t.name} loading="lazy" className="h-full w-full object-cover" />
+                <img
+                  src={t.photo}
+                  alt={t.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
               </div>
               <CardContent className="p-5 text-center">
                 <h3 className="text-base font-semibold leading-tight">{t.name}</h3>

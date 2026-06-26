@@ -23,7 +23,9 @@ export function Navbar() {
         <Link to="/" className="flex min-w-0 items-center gap-3">
           <img src={logo} alt="Logo" className="h-10 w-10 shrink-0" width={40} height={40} />
           <div className="min-w-0 leading-tight">
-            <div className="truncate text-sm font-bold text-primary sm:text-base">{SCHOOL.name}</div>
+            <div className="truncate text-sm font-bold text-primary sm:text-base">
+              {SCHOOL.name}
+            </div>
             <div className="hidden text-xs text-muted-foreground sm:block">{SCHOOL.tagline}</div>
           </div>
         </Link>
@@ -37,7 +39,9 @@ export function Navbar() {
                 <div key={item.to} className="group relative">
                   <button
                     className={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                      active ? "bg-secondary text-primary" : "text-foreground/70 hover:bg-secondary/60 hover:text-primary"
+                      active
+                        ? "bg-secondary text-primary"
+                        : "text-foreground/70 hover:bg-secondary/60 hover:text-primary"
                     }`}
                   >
                     {item.label}
@@ -67,7 +71,9 @@ export function Navbar() {
                 to={item.to}
                 activeOptions={{ exact: item.to === "/" }}
                 activeProps={{ className: "text-primary bg-secondary" }}
-                inactiveProps={{ className: "text-foreground/70 hover:text-primary hover:bg-secondary/60" }}
+                inactiveProps={{
+                  className: "text-foreground/70 hover:text-primary hover:bg-secondary/60",
+                }}
                 className="rounded-md px-3 py-2 text-sm font-medium transition-colors"
               >
                 {item.label}
@@ -107,7 +113,9 @@ export function Navbar() {
                       }`}
                     >
                       {item.label}
-                      <ChevronDown className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`} />
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${expanded ? "rotate-180" : ""}`}
+                      />
                     </button>
                     {expanded && (
                       <div className="ml-3 flex flex-col border-l border-border pb-2 pl-3">
@@ -143,7 +151,9 @@ export function Navbar() {
               );
             })}
             <Button asChild className="mt-3">
-              <Link to="/ppdb" onClick={() => setOpen(false)}>Daftar PPDB</Link>
+              <Link to="/ppdb" onClick={() => setOpen(false)}>
+                Daftar PPDB
+              </Link>
             </Button>
           </nav>
         </div>

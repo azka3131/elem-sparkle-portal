@@ -17,7 +17,10 @@ export const Route = createFileRoute("/profile/vision")({
 function VisionMission() {
   return (
     <>
-      <PageHeader title="Visi & Misi" subtitle="Arah dan langkah perjuangan kami dalam mendidik generasi penerus." />
+      <PageHeader
+        title="Visi & Misi"
+        subtitle="Arah dan langkah perjuangan kami dalam mendidik generasi penerus."
+      />
       <section className="mx-auto max-w-5xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-6 md:grid-cols-2">
           <Card className="border-border/60 shadow-[var(--shadow-card)]">
