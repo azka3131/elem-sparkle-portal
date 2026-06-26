@@ -1,6 +1,7 @@
 export const SCHOOL = {
   name: "SD Cendekia Harapan",
   tagline: "Belajar, Berkembang, Berprestasi",
+  motto: "Cerdas, Berkarakter, Berprestasi",
   welcome:
     "Selamat datang di SD Cendekia Harapan — sekolah dasar modern yang menumbuhkan rasa ingin tahu, karakter, dan kreativitas setiap anak.",
   address: "Jl. Pendidikan No. 123, Jakarta Selatan 12345",
@@ -9,6 +10,38 @@ export const SCHOOL = {
   hours: "Senin – Jumat, 07.00 – 15.00",
 };
 
+// Hero slider images — admin will manage these later via dashboard.
+export const HERO_SLIDES = [
+  {
+    id: 1,
+    image:
+      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=80",
+    title: "Selamat Datang di SD Cendekia Harapan",
+    subtitle: "Cerdas, Berkarakter, Berprestasi",
+  },
+  {
+    id: 2,
+    image:
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80",
+    title: "Belajar dengan Penuh Semangat",
+    subtitle: "Lingkungan ramah anak yang menumbuhkan rasa ingin tahu.",
+  },
+  {
+    id: 3,
+    image:
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1920&q=80",
+    title: "Membangun Generasi Masa Depan",
+    subtitle: "Pendidikan karakter berlandaskan nilai luhur bangsa.",
+  },
+  {
+    id: 4,
+    image:
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80",
+    title: "Pendaftaran Siswa Baru Dibuka",
+    subtitle: "Bergabunglah bersama keluarga besar kami tahun ini.",
+  },
+];
+
 export const STATS = [
   { label: "Siswa Aktif", value: "820+" },
   { label: "Guru & Staf", value: "65" },
@@ -16,12 +49,47 @@ export const STATS = [
   { label: "Tahun Berdiri", value: "1985" },
 ];
 
-export const NEWS = [
+export const VISION =
+  "Menjadi sekolah dasar unggulan yang membentuk generasi cerdas, berkarakter, dan siap menghadapi tantangan masa depan dengan nilai-nilai luhur bangsa.";
+
+export const MISSION = [
+  "Menyelenggarakan pembelajaran aktif, kreatif, dan menyenangkan.",
+  "Menumbuhkan karakter religius dan peduli sosial.",
+  "Mengembangkan literasi, numerasi, dan kompetensi digital.",
+  "Membangun budaya cinta lingkungan dan hidup sehat.",
+  "Menjalin kemitraan erat antara sekolah, keluarga, dan masyarakat.",
+];
+
+export const HISTORY = [
+  {
+    year: "1985",
+    title: "Sekolah Didirikan",
+    text: "Berawal dari 3 ruang kelas sederhana oleh sekelompok pendidik visioner.",
+  },
+  {
+    year: "2002",
+    title: "Kurikulum Berbasis Karakter",
+    text: "Salah satu pelopor penerapan pendidikan karakter di Indonesia.",
+  },
+  {
+    year: "2018",
+    title: "Gedung Baru 3 Lantai",
+    text: "Meresmikan gedung modern dengan lab komputer, sains, dan perpustakaan.",
+  },
+  {
+    year: "2026",
+    title: "Lebih dari 8.000 Alumni",
+    text: "Lulusan tersebar di berbagai bidang dan jenjang pendidikan.",
+  },
+];
+
+const NEWS_DATA = [
   {
     id: 1,
     title: "Juara Umum Olimpiade Sains Tingkat Provinsi",
     date: "12 Juni 2026",
     category: "Prestasi",
+    type: "news" as const,
     excerpt:
       "Tim sains SD Cendekia Harapan meraih juara umum dalam Olimpiade Sains Nasional tingkat provinsi tahun ini.",
     image:
@@ -32,6 +100,7 @@ export const NEWS = [
     title: "Pekan Literasi & Festival Buku Anak 2026",
     date: "5 Juni 2026",
     category: "Kegiatan",
+    type: "news" as const,
     excerpt:
       "Sepekan penuh kegiatan membaca, mendongeng, dan bertemu penulis cilik favorit siswa-siswi kami.",
     image:
@@ -42,6 +111,7 @@ export const NEWS = [
     title: "Pembukaan Pendaftaran Siswa Baru 2026/2027",
     date: "1 Juni 2026",
     category: "Pengumuman",
+    type: "announcement" as const,
     excerpt:
       "PPDB tahun ajaran 2026/2027 resmi dibuka. Daftarkan putra-putri Anda untuk bergabung bersama kami.",
     image:
@@ -52,6 +122,7 @@ export const NEWS = [
     title: "Kunjungan Edukatif ke Museum Nasional",
     date: "22 Mei 2026",
     category: "Kegiatan",
+    type: "news" as const,
     excerpt:
       "Siswa kelas 5 belajar sejarah secara langsung melalui kunjungan ke Museum Nasional Indonesia.",
     image:
@@ -62,6 +133,7 @@ export const NEWS = [
     title: "Program Sekolah Hijau Diluncurkan",
     date: "15 Mei 2026",
     category: "Program",
+    type: "news" as const,
     excerpt:
       "Inisiatif ramah lingkungan baru untuk membentuk karakter peduli alam sejak dini.",
     image:
@@ -72,12 +144,39 @@ export const NEWS = [
     title: "Workshop Parenting Bersama Psikolog Anak",
     date: "8 Mei 2026",
     category: "Kegiatan",
+    type: "news" as const,
     excerpt:
       "Sesi diskusi bersama orang tua mengenai tumbuh kembang dan pendidikan emosional anak.",
     image:
       "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
   },
+  {
+    id: 7,
+    title: "Libur Hari Raya & Penyesuaian Jadwal Belajar",
+    date: "20 April 2026",
+    category: "Pengumuman",
+    type: "announcement" as const,
+    excerpt:
+      "Sekolah akan libur selama satu minggu. Pembelajaran daring akan diberikan untuk pekan berikutnya.",
+    image:
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+  },
+  {
+    id: 8,
+    title: "Rapat Orang Tua Murid Semester Genap",
+    date: "10 April 2026",
+    category: "Pengumuman",
+    type: "announcement" as const,
+    excerpt:
+      "Diharapkan kehadiran seluruh orang tua/wali murid pada rapat semester genap di aula sekolah.",
+    image:
+      "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+  },
 ];
+
+export const NEWS = NEWS_DATA;
+export const SCHOOL_NEWS = NEWS_DATA.filter((n) => n.type === "news");
+export const ANNOUNCEMENTS = NEWS_DATA.filter((n) => n.type === "announcement");
 
 export const TEACHERS = [
   {
@@ -130,19 +229,48 @@ export const TEACHERS = [
   },
 ];
 
-export const GALLERY = [
-  "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
-  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
-  "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
-  "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80",
-  "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
-  "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=80",
-  "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&q=80",
-  "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
-  "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80",
-  "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&q=80",
-  "https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=800&q=80",
-  "https://images.unsplash.com/photo-1610484826917-0f101a7a64fc?w=800&q=80",
+// Gallery organized by albums.
+export const GALLERY_ALBUMS = [
+  {
+    title: "Kegiatan Belajar",
+    cover: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
+      "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+      "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+      "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=800&q=80",
+    ],
+  },
+  {
+    title: "Perayaan & Pentas Seni",
+    cover: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800&q=80",
+      "https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80",
+      "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=800&q=80",
+      "https://images.unsplash.com/photo-1522661067900-ab829854a57f?w=800&q=80",
+    ],
+  },
+  {
+    title: "Olahraga & Outdoor",
+    cover: "https://images.unsplash.com/photo-1526676037777-05a232554d77?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1526676037777-05a232554d77?w=800&q=80",
+      "https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=800&q=80",
+      "https://images.unsplash.com/photo-1588072432836-e10032774350?w=800&q=80",
+      "https://images.unsplash.com/photo-1610484826917-0f101a7a64fc?w=800&q=80",
+    ],
+  },
+  {
+    title: "Wisuda & Prestasi",
+    cover: "https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1567168544813-cc03465b4fa8?w=800&q=80",
+      "https://images.unsplash.com/photo-1523580494863-6f3031224c94?w=800&q=80",
+      "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
+      "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    ],
+  },
 ];
 
 export const ACHIEVEMENTS = [
@@ -227,13 +355,48 @@ export const FACILITIES = [
   },
 ];
 
-export const NAV_LINKS = [
+// Navigation with nested dropdowns. Each entry is a top-level menu item; if
+// `children` is present it renders as a dropdown.
+export type NavChild = { to: string; label: string };
+export type NavItem = { to: string; label: string; children?: NavChild[] };
+
+export const NAV_ITEMS: NavItem[] = [
   { to: "/", label: "Beranda" },
-  { to: "/profile", label: "Profil" },
+  {
+    to: "/profile",
+    label: "Profil",
+    children: [
+      { to: "/profile/vision", label: "Visi & Misi" },
+      { to: "/profile/history", label: "Sejarah Sekolah" },
+      { to: "/profile/structure", label: "Struktur Organisasi" },
+    ],
+  },
   { to: "/teachers", label: "Guru & Staf" },
-  { to: "/news", label: "Berita" },
+  {
+    to: "/news",
+    label: "Berita",
+    children: [
+      { to: "/news/school", label: "Berita Sekolah" },
+      { to: "/news/announcements", label: "Pengumuman" },
+    ],
+  },
   { to: "/ppdb", label: "PPDB" },
   { to: "/gallery", label: "Galeri" },
   { to: "/achievements", label: "Prestasi" },
   { to: "/facilities", label: "Fasilitas" },
-] as const;
+  { to: "/contact", label: "Kontak" },
+];
+
+// Flat list of routes for the footer "quick links" section.
+export const FOOTER_LINKS: NavChild[] = [
+  { to: "/", label: "Beranda" },
+  { to: "/profile/vision", label: "Visi & Misi" },
+  { to: "/teachers", label: "Guru & Staf" },
+  { to: "/news/school", label: "Berita Sekolah" },
+  { to: "/news/announcements", label: "Pengumuman" },
+  { to: "/ppdb", label: "PPDB" },
+  { to: "/gallery", label: "Galeri" },
+  { to: "/achievements", label: "Prestasi" },
+  { to: "/facilities", label: "Fasilitas" },
+  { to: "/contact", label: "Kontak" },
+];

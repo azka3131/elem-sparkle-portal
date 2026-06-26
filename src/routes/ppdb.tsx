@@ -21,21 +21,33 @@ const steps = [
   "Pengumuman & daftar ulang",
 ];
 
+// Brochure image — admin will be able to replace this via dashboard later.
+const BROCHURE_IMAGE: string | null = null;
+
 function PPDB() {
   return (
     <>
       <PageHeader title="PPDB 2026/2027" subtitle="Bergabunglah dengan keluarga besar SD Cendekia Harapan." />
       <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+        {/* Large brochure image — replaceable by admin. */}
         <div className="overflow-hidden rounded-3xl border border-border bg-card shadow-[var(--shadow-card)]">
-          <div className="aspect-[3/4] w-full overflow-hidden bg-[var(--gradient-hero)] sm:aspect-[16/10]">
-            <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center text-primary-foreground">
-              <FileImage className="h-16 w-16 opacity-90" />
-              <p className="text-2xl font-bold sm:text-3xl">Brosur PPDB 2026/2027</p>
-              <p className="max-w-md text-primary-foreground/85">
-                Placeholder gambar — unggah brosur penerimaan siswa baru di sini (rekomendasi rasio 3:4 atau 16:10).
-              </p>
+          {BROCHURE_IMAGE ? (
+            <img
+              src={BROCHURE_IMAGE}
+              alt="Brosur PPDB 2026/2027"
+              className="block w-full"
+            />
+          ) : (
+            <div className="aspect-[3/4] w-full bg-[var(--gradient-hero)] sm:aspect-[16/10]">
+              <div className="flex h-full w-full flex-col items-center justify-center gap-3 p-8 text-center text-primary-foreground">
+                <FileImage className="h-16 w-16 opacity-90" />
+                <p className="text-2xl font-bold sm:text-3xl">Brosur PPDB 2026/2027</p>
+                <p className="max-w-md text-primary-foreground/85">
+                  Placeholder gambar — administrator akan dapat mengunggah brosur PPDB terbaru di sini (rekomendasi rasio 3:4 atau 16:10).
+                </p>
+              </div>
             </div>
-          </div>
+          )}
         </div>
 
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
