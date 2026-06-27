@@ -21,6 +21,7 @@ import { Route as ProfileHistoryRouteImport } from './routes/profile.history'
 import { Route as NewsSchoolRouteImport } from './routes/news.school'
 import { Route as NewsAnnouncementsRouteImport } from './routes/news.announcements'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as NewsAnnouncementsSlugRouteImport } from './routes/news.announcements.$slug'
 
 const TeachersRoute = TeachersRouteImport.update({
@@ -83,6 +84,11 @@ const NewsSlugRoute = NewsSlugRouteImport.update({
   path: '/news/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsAnnouncementsSlugRoute = NewsAnnouncementsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -96,6 +102,7 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/admin/login': typeof AdminLoginRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
@@ -111,6 +118,7 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/admin/login': typeof AdminLoginRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
@@ -127,6 +135,7 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/admin/login': typeof AdminLoginRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/login'
     | '/news/$slug'
     | '/news/announcements'
     | '/news/school'
@@ -159,6 +169,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/login'
     | '/news/$slug'
     | '/news/announcements'
     | '/news/school'
@@ -174,6 +185,7 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/login'
     | '/news/$slug'
     | '/news/announcements'
     | '/news/school'
@@ -190,6 +202,7 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   PpdbRoute: typeof PpdbRoute
   TeachersRoute: typeof TeachersRoute
+  AdminLoginRoute: typeof AdminLoginRoute
   NewsSlugRoute: typeof NewsSlugRoute
   NewsAnnouncementsRoute: typeof NewsAnnouncementsRouteWithChildren
   NewsSchoolRoute: typeof NewsSchoolRoute
@@ -284,6 +297,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news/announcements/$slug': {
       id: '/news/announcements/$slug'
       path: '/$slug'
@@ -312,6 +332,7 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   PpdbRoute: PpdbRoute,
   TeachersRoute: TeachersRoute,
+  AdminLoginRoute: AdminLoginRoute,
   NewsSlugRoute: NewsSlugRoute,
   NewsAnnouncementsRoute: NewsAnnouncementsRouteWithChildren,
   NewsSchoolRoute: NewsSchoolRoute,
