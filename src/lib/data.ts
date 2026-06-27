@@ -10,6 +10,15 @@ export const SCHOOL = {
   hours: "Senin – Jumat, 07.00 – 15.00",
 };
 
+// Principal welcome — admin will edit later via dashboard.
+export const PRINCIPAL = {
+  name: "Dra. Siti Rahmawati, M.Pd.",
+  title: "Kepala Sekolah",
+  photo: "https://i.pravatar.cc/400?img=47",
+  message:
+    "Assalamu'alaikum dan salam sejahtera. Atas nama keluarga besar SD Cendekia Harapan, kami menyambut hangat kehadiran Anda di laman resmi kami. Sekolah ini berkomitmen menumbuhkan karakter mulia, semangat belajar, dan kreativitas anak-anak kami melalui pembelajaran yang menyenangkan dan bermakna. Mari bersama membangun generasi penerus yang cerdas, berakhlak, dan siap menghadapi masa depan.",
+};
+
 // Hero slider images — admin will manage these later via dashboard.
 export const HERO_SLIDES = [
   {
