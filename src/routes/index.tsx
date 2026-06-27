@@ -9,7 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { HeroSlider } from "@/components/HeroSlider";
 import { toast } from "sonner";
-import { ACHIEVEMENTS, FACILITIES, HERO_SLIDES, SCHOOL_NEWS, STATS, SCHOOL } from "@/lib/data";
+import { ACHIEVEMENTS, FACILITIES, HERO_SLIDES, SCHOOL_NEWS, STATS, SCHOOL, PRINCIPAL } from "@/lib/data";
+import { Quote } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
