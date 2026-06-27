@@ -43,7 +43,7 @@ export function HeroSlider({ slides, intervalMs = 3000, children }: Props) {
 
   return (
     <section
-      className="relative h-[70vh] min-h-[460px] w-full overflow-hidden bg-primary"
+      className="relative -mt-16 h-screen min-h-[560px] w-full overflow-hidden bg-primary"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
@@ -57,7 +57,7 @@ export function HeroSlider({ slides, intervalMs = 3000, children }: Props) {
           aria-hidden={i !== index}
         >
           <img src={s.image} alt={s.title ?? ""} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/55 to-primary/20" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/70" />
         </div>
       ))}
 

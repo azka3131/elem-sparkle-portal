@@ -88,91 +88,140 @@ export const HISTORY = [
   },
 ];
 
-const NEWS_DATA = [
+export type NewsType = "news" | "announcement";
+export interface NewsArticle {
+  id: number;
+  slug: string;
+  title: string;
+  date: string;
+  category: string;
+  type: NewsType;
+  excerpt: string;
+  image: string;
+  author: string;
+  content: string[];
+}
+
+const lorem = (topic: string): string[] => [
+  `${topic} menjadi salah satu agenda penting yang kami selenggarakan di SD Cendekia Harapan tahun ini. Kegiatan ini dirancang untuk memberikan pengalaman belajar yang bermakna bagi seluruh siswa serta memperkuat keterlibatan orang tua dan masyarakat sekitar.`,
+  `Selama pelaksanaan, para siswa terlihat antusias mengikuti setiap rangkaian acara. Guru dan staf bekerja sama menyiapkan materi yang sesuai dengan tahap perkembangan anak, sehingga proses belajar menjadi menyenangkan sekaligus mendalam.`,
+  `Kami percaya bahwa kegiatan seperti ini bukan sekadar seremonial, melainkan bagian dari upaya membentuk karakter, menumbuhkan rasa percaya diri, dan mengasah kemampuan berpikir kritis siswa sejak dini.`,
+  `Terima kasih kepada seluruh pihak yang telah mendukung — guru, orang tua, mitra, dan tentu saja para siswa hebat kami. Sampai jumpa pada kegiatan berikutnya, dan terus dukung perjalanan belajar anak-anak kami.`,
+];
+
+const NEWS_DATA: NewsArticle[] = [
   {
     id: 1,
+    slug: "juara-umum-olimpiade-sains-provinsi",
     title: "Juara Umum Olimpiade Sains Tingkat Provinsi",
     date: "12 Juni 2026",
     category: "Prestasi",
-    type: "news" as const,
+    type: "news",
     excerpt:
       "Tim sains SD Cendekia Harapan meraih juara umum dalam Olimpiade Sains Nasional tingkat provinsi tahun ini.",
-    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80",
+    author: "Humas Sekolah",
+    content: lorem("Olimpiade Sains Tingkat Provinsi"),
   },
   {
     id: 2,
+    slug: "pekan-literasi-festival-buku-anak-2026",
     title: "Pekan Literasi & Festival Buku Anak 2026",
     date: "5 Juni 2026",
     category: "Kegiatan",
-    type: "news" as const,
+    type: "news",
     excerpt:
       "Sepekan penuh kegiatan membaca, mendongeng, dan bertemu penulis cilik favorit siswa-siswi kami.",
-    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1600&q=80",
+    author: "Tim Perpustakaan",
+    content: lorem("Pekan Literasi & Festival Buku Anak"),
   },
   {
     id: 3,
+    slug: "pembukaan-ppdb-2026-2027",
     title: "Pembukaan Pendaftaran Siswa Baru 2026/2027",
     date: "1 Juni 2026",
     category: "Pengumuman",
-    type: "announcement" as const,
+    type: "announcement",
     excerpt:
       "PPDB tahun ajaran 2026/2027 resmi dibuka. Daftarkan putra-putri Anda untuk bergabung bersama kami.",
-    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80",
+    author: "Panitia PPDB",
+    content: lorem("Pembukaan PPDB 2026/2027"),
   },
   {
     id: 4,
+    slug: "kunjungan-edukatif-museum-nasional",
     title: "Kunjungan Edukatif ke Museum Nasional",
     date: "22 Mei 2026",
     category: "Kegiatan",
-    type: "news" as const,
+    type: "news",
     excerpt:
       "Siswa kelas 5 belajar sejarah secara langsung melalui kunjungan ke Museum Nasional Indonesia.",
-    image: "https://images.unsplash.com/photo-1605007493699-af65834f8a00?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1605007493699-af65834f8a00?w=1600&q=80",
+    author: "Wali Kelas 5",
+    content: lorem("Kunjungan Edukatif ke Museum Nasional"),
   },
   {
     id: 5,
+    slug: "program-sekolah-hijau-diluncurkan",
     title: "Program Sekolah Hijau Diluncurkan",
     date: "15 Mei 2026",
     category: "Program",
-    type: "news" as const,
+    type: "news",
     excerpt: "Inisiatif ramah lingkungan baru untuk membentuk karakter peduli alam sejak dini.",
-    image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&q=80",
+    author: "Tim Adiwiyata",
+    content: lorem("Program Sekolah Hijau"),
   },
   {
     id: 6,
+    slug: "workshop-parenting-psikolog-anak",
     title: "Workshop Parenting Bersama Psikolog Anak",
     date: "8 Mei 2026",
     category: "Kegiatan",
-    type: "news" as const,
+    type: "news",
     excerpt:
       "Sesi diskusi bersama orang tua mengenai tumbuh kembang dan pendidikan emosional anak.",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=80",
+    author: "Komite Sekolah",
+    content: lorem("Workshop Parenting Bersama Psikolog Anak"),
   },
   {
     id: 7,
+    slug: "libur-hari-raya-penyesuaian-jadwal",
     title: "Libur Hari Raya & Penyesuaian Jadwal Belajar",
     date: "20 April 2026",
     category: "Pengumuman",
-    type: "announcement" as const,
+    type: "announcement",
     excerpt:
       "Sekolah akan libur selama satu minggu. Pembelajaran daring akan diberikan untuk pekan berikutnya.",
-    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1600&q=80",
+    author: "Tata Usaha",
+    content: lorem("Libur Hari Raya & Penyesuaian Jadwal"),
   },
   {
     id: 8,
+    slug: "rapat-orang-tua-semester-genap",
     title: "Rapat Orang Tua Murid Semester Genap",
     date: "10 April 2026",
     category: "Pengumuman",
-    type: "announcement" as const,
+    type: "announcement",
     excerpt:
       "Diharapkan kehadiran seluruh orang tua/wali murid pada rapat semester genap di aula sekolah.",
-    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=80",
+    author: "Komite Sekolah",
+    content: lorem("Rapat Orang Tua Murid Semester Genap"),
   },
 ];
 
 export const NEWS = NEWS_DATA;
 export const SCHOOL_NEWS = NEWS_DATA.filter((n) => n.type === "news");
 export const ANNOUNCEMENTS = NEWS_DATA.filter((n) => n.type === "announcement");
+
+export function findNews(slug: string): NewsArticle | undefined {
+  return NEWS_DATA.find((n) => n.slug === slug);
+}
 
 export const TEACHERS = [
   {

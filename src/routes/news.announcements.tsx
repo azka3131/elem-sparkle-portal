@@ -21,7 +21,7 @@ function Announcements() {
         subtitle="Informasi resmi untuk orang tua, siswa, dan masyarakat."
       />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <NewsGrid items={ANNOUNCEMENTS} />
+        <NewsGrid items={ANNOUNCEMENTS} basePath="/news/announcements" />
       </section>
     </>
   );

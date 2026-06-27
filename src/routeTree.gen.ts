@@ -20,6 +20,9 @@ import { Route as ProfileStructureRouteImport } from './routes/profile.structure
 import { Route as ProfileHistoryRouteImport } from './routes/profile.history'
 import { Route as NewsSchoolRouteImport } from './routes/news.school'
 import { Route as NewsAnnouncementsRouteImport } from './routes/news.announcements'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as NewsAnnouncementsSlugRouteImport } from './routes/news.announcements.$slug'
 
 const TeachersRoute = TeachersRouteImport.update({
   id: '/teachers',
@@ -76,6 +79,21 @@ const NewsAnnouncementsRoute = NewsAnnouncementsRouteImport.update({
   path: '/news/announcements',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/news/$slug',
+  path: '/news/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLoginRoute = AdminLoginRouteImport.update({
+  id: '/admin/login',
+  path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsAnnouncementsSlugRoute = NewsAnnouncementsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsAnnouncementsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -84,11 +102,14 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
-  '/news/announcements': typeof NewsAnnouncementsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -97,11 +118,14 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
-  '/news/announcements': typeof NewsAnnouncementsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -111,11 +135,14 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
-  '/news/announcements': typeof NewsAnnouncementsRoute
+  '/admin/login': typeof AdminLoginRoute
+  '/news/$slug': typeof NewsSlugRoute
+  '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -126,11 +153,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/login'
+    | '/news/$slug'
     | '/news/announcements'
     | '/news/school'
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/news/announcements/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -139,11 +169,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/login'
+    | '/news/$slug'
     | '/news/announcements'
     | '/news/school'
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/news/announcements/$slug'
   id:
     | '__root__'
     | '/'
@@ -152,11 +185,14 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/login'
+    | '/news/$slug'
     | '/news/announcements'
     | '/news/school'
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/news/announcements/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -166,7 +202,9 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   PpdbRoute: typeof PpdbRoute
   TeachersRoute: typeof TeachersRoute
-  NewsAnnouncementsRoute: typeof NewsAnnouncementsRoute
+  AdminLoginRoute: typeof AdminLoginRoute
+  NewsSlugRoute: typeof NewsSlugRoute
+  NewsAnnouncementsRoute: typeof NewsAnnouncementsRouteWithChildren
   NewsSchoolRoute: typeof NewsSchoolRoute
   ProfileHistoryRoute: typeof ProfileHistoryRoute
   ProfileStructureRoute: typeof ProfileStructureRoute
@@ -252,8 +290,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsAnnouncementsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/news/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/login': {
+      id: '/admin/login'
+      path: '/admin/login'
+      fullPath: '/admin/login'
+      preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/announcements/$slug': {
+      id: '/news/announcements/$slug'
+      path: '/$slug'
+      fullPath: '/news/announcements/$slug'
+      preLoaderRoute: typeof NewsAnnouncementsSlugRouteImport
+      parentRoute: typeof NewsAnnouncementsRoute
+    }
   }
 }
+
+interface NewsAnnouncementsRouteChildren {
+  NewsAnnouncementsSlugRoute: typeof NewsAnnouncementsSlugRoute
+}
+
+const NewsAnnouncementsRouteChildren: NewsAnnouncementsRouteChildren = {
+  NewsAnnouncementsSlugRoute: NewsAnnouncementsSlugRoute,
+}
+
+const NewsAnnouncementsRouteWithChildren =
+  NewsAnnouncementsRoute._addFileChildren(NewsAnnouncementsRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -262,7 +332,9 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   PpdbRoute: PpdbRoute,
   TeachersRoute: TeachersRoute,
-  NewsAnnouncementsRoute: NewsAnnouncementsRoute,
+  AdminLoginRoute: AdminLoginRoute,
+  NewsSlugRoute: NewsSlugRoute,
+  NewsAnnouncementsRoute: NewsAnnouncementsRouteWithChildren,
   NewsSchoolRoute: NewsSchoolRoute,
   ProfileHistoryRoute: ProfileHistoryRoute,
   ProfileStructureRoute: ProfileStructureRoute,

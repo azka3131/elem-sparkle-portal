@@ -120,14 +120,18 @@ function Home() {
               key={n.id}
               className="group overflow-hidden border-border/60 pt-0 transition-shadow hover:shadow-[var(--shadow-card)]"
             >
-              <div className="aspect-[16/10] overflow-hidden">
+              <Link
+                to="/news/$slug"
+                params={{ slug: n.slug }}
+                className="block aspect-[16/10] overflow-hidden"
+              >
                 <img
                   src={n.image}
                   alt={n.title}
                   loading="lazy"
                   className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-              </div>
+              </Link>
               <CardContent className="p-5">
                 <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   <Badge variant="secondary" className="text-primary">
@@ -135,7 +139,13 @@ function Home() {
                   </Badge>
                   <span>{n.date}</span>
                 </div>
-                <h3 className="mt-3 line-clamp-2 text-lg font-semibold leading-snug">{n.title}</h3>
+                <Link
+                  to="/news/$slug"
+                  params={{ slug: n.slug }}
+                  className="mt-3 line-clamp-2 block text-lg font-semibold leading-snug hover:text-primary"
+                >
+                  {n.title}
+                </Link>
                 <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{n.excerpt}</p>
               </CardContent>
             </Card>
