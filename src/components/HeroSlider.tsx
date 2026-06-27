@@ -43,7 +43,7 @@ export function HeroSlider({ slides, intervalMs = 3000, children }: Props) {
 
   return (
     <section
-      className="relative h-[70vh] min-h-[460px] w-full overflow-hidden bg-primary"
+      className="relative -mt-16 h-screen min-h-[560px] w-full overflow-hidden bg-primary"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       aria-roledescription="carousel"
