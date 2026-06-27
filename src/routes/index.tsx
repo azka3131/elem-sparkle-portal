@@ -63,8 +63,40 @@ function Home() {
         </div>
       </HeroSlider>
 
+      {/* Principal Welcome */}
+      <section className="bg-background py-16">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-[auto_1fr] lg:gap-14 lg:px-8">
+          <div className="mx-auto lg:mx-0">
+            <div className="relative">
+              <div className="absolute -inset-3 rounded-3xl bg-gradient-to-br from-primary/20 to-primary/5" />
+              <img
+                src={PRINCIPAL.photo}
+                alt={PRINCIPAL.name}
+                className="relative h-64 w-64 rounded-3xl object-cover shadow-[var(--shadow-card)] sm:h-72 sm:w-72"
+              />
+            </div>
+          </div>
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-wider text-primary">
+              Sambutan Kepala Sekolah
+            </p>
+            <h2 className="mt-1 text-2xl font-bold sm:text-3xl">
+              Selamat datang di {SCHOOL.name}
+            </h2>
+            <div className="mt-5 flex gap-3 text-muted-foreground">
+              <Quote className="h-6 w-6 shrink-0 text-primary/60" />
+              <p className="text-base leading-relaxed">{PRINCIPAL.message}</p>
+            </div>
+            <div className="mt-6">
+              <div className="font-semibold text-foreground">{PRINCIPAL.name}</div>
+              <div className="text-sm text-primary">{PRINCIPAL.title}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
-      <section className="border-b border-border bg-background">
+      <section className="border-y border-border bg-secondary/30">
         <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 py-12 sm:px-6 md:grid-cols-4 lg:px-8">
           {STATS.map((s) => (
             <div key={s.label} className="text-center">
