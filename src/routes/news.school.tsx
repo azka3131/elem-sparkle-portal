@@ -24,7 +24,7 @@ function SchoolNews() {
         subtitle="Ikuti cerita dan kabar terbaru dari komunitas kami."
       />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <NewsGrid items={SCHOOL_NEWS} />
+        <NewsGrid items={SCHOOL_NEWS} basePath="/news" />
       </section>
     </>
   );
