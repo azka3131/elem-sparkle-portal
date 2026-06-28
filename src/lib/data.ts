@@ -229,6 +229,10 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=80",
     author: "Komite Sekolah",
     content: lorem("Rapat Orang Tua Murid Semester Genap"),
+    attachments: [
+      { name: "Undangan-Rapat-Orang-Tua.pdf", size: "92 KB", kind: "pdf", url: "#" },
+      { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "#" },
+    ],
   },
 ];
 
