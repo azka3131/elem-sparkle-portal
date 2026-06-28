@@ -212,6 +212,10 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1600&q=80",
     author: "Tata Usaha",
     content: lorem("Libur Hari Raya & Penyesuaian Jadwal"),
+    attachments: [
+      { name: "Surat-Edaran-Libur-Hari-Raya.pdf", size: "186 KB", kind: "pdf", url: "#" },
+      { name: "Materi-Pembelajaran-Daring.zip", size: "4.2 MB", kind: "zip", url: "#" },
+    ],
   },
   {
     id: 8,
