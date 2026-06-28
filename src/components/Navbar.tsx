@@ -18,12 +18,21 @@ export function Navbar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
+    <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/65 shadow-[0_1px_0_0_oklch(0.92_0.015_250/0.6)]">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex min-w-0 items-center gap-3">
-          <img src={logo} alt="Logo" className="h-10 w-10 shrink-0" width={40} height={40} />
+        <Link
+          to="/"
+          className="group flex min-w-0 items-center gap-3 transition-opacity hover:opacity-90"
+        >
+          <img
+            src={logo}
+            alt="Logo"
+            className="h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105"
+            width={40}
+            height={40}
+          />
           <div className="min-w-0 leading-tight">
-            <div className="truncate text-sm font-bold text-primary sm:text-base">
+            <div className="truncate text-sm font-bold tracking-tight text-primary sm:text-base">
               {SCHOOL.name}
             </div>
             <div className="hidden text-xs text-muted-foreground sm:block">{SCHOOL.tagline}</div>
