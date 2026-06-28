@@ -89,6 +89,13 @@ export const HISTORY = [
 ];
 
 export type NewsType = "news" | "announcement";
+export type AttachmentKind = "pdf" | "doc" | "docx" | "xls" | "xlsx" | "zip";
+export interface Attachment {
+  name: string;
+  size: string;
+  kind: AttachmentKind;
+  url: string;
+}
 export interface NewsArticle {
   id: number;
   slug: string;
@@ -100,6 +107,7 @@ export interface NewsArticle {
   image: string;
   author: string;
   content: string[];
+  attachments?: Attachment[];
 }
 
 const lorem = (topic: string): string[] => [
