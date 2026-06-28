@@ -47,24 +47,24 @@ export function Navbar() {
               return (
                 <div key={item.to} className="group relative">
                   <button
-                    className={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                    className={`inline-flex items-center gap-1 rounded-lg px-3.5 py-2 text-sm font-medium transition-all duration-200 ${
                       active
                         ? "bg-secondary text-primary"
-                        : "text-foreground/70 hover:bg-secondary/60 hover:text-primary"
+                        : "text-foreground/75 hover:bg-secondary/70 hover:text-primary"
                     }`}
                   >
                     {item.label}
-                    <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover:rotate-180" />
                   </button>
-                  <div className="invisible absolute left-0 top-full z-50 min-w-[220px] translate-y-1 opacity-0 transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
-                    <div className="mt-2 overflow-hidden rounded-xl border border-border bg-popover py-2 shadow-[var(--shadow-soft)]">
+                  <div className="pointer-events-none invisible absolute left-0 top-full z-50 min-w-[230px] pt-2 opacity-0 transition-[opacity,visibility] duration-200 group-hover:pointer-events-auto group-hover:visible group-hover:opacity-100">
+                    <div className="dropdown-panel overflow-hidden rounded-2xl border border-border/70 bg-popover/95 py-2 shadow-[var(--shadow-soft)] backdrop-blur">
                       {item.children.map((c) => (
                         <Link
                           key={c.to}
                           to={c.to}
                           activeProps={{ className: "bg-secondary text-primary" }}
                           inactiveProps={{ className: "text-foreground/80" }}
-                          className="block px-4 py-2 text-sm hover:bg-secondary/60 hover:text-primary"
+                          className="block px-4 py-2.5 text-sm transition-colors hover:bg-secondary/70 hover:text-primary hover:pl-5"
                         >
                           {c.label}
                         </Link>
