@@ -89,6 +89,13 @@ export const HISTORY = [
 ];
 
 export type NewsType = "news" | "announcement";
+export type AttachmentKind = "pdf" | "doc" | "docx" | "xls" | "xlsx" | "zip";
+export interface Attachment {
+  name: string;
+  size: string;
+  kind: AttachmentKind;
+  url: string;
+}
 export interface NewsArticle {
   id: number;
   slug: string;
@@ -100,6 +107,7 @@ export interface NewsArticle {
   image: string;
   author: string;
   content: string[];
+  attachments?: Attachment[];
 }
 
 const lorem = (topic: string): string[] => [
@@ -148,6 +156,11 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1600&q=80",
     author: "Panitia PPDB",
     content: lorem("Pembukaan PPDB 2026/2027"),
+    attachments: [
+      { name: "Formulir-Pendaftaran-PPDB-2026.pdf", size: "248 KB", kind: "pdf", url: "#" },
+      { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "#" },
+      { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "#" },
+    ],
   },
   {
     id: 4,
@@ -199,6 +212,10 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1600&q=80",
     author: "Tata Usaha",
     content: lorem("Libur Hari Raya & Penyesuaian Jadwal"),
+    attachments: [
+      { name: "Surat-Edaran-Libur-Hari-Raya.pdf", size: "186 KB", kind: "pdf", url: "#" },
+      { name: "Materi-Pembelajaran-Daring.zip", size: "4.2 MB", kind: "zip", url: "#" },
+    ],
   },
   {
     id: 8,
@@ -212,6 +229,10 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=80",
     author: "Komite Sekolah",
     content: lorem("Rapat Orang Tua Murid Semester Genap"),
+    attachments: [
+      { name: "Undangan-Rapat-Orang-Tua.pdf", size: "92 KB", kind: "pdf", url: "#" },
+      { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "#" },
+    ],
   },
 ];
 
