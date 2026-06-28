@@ -89,28 +89,28 @@ export function HeroSlider({ slides, intervalMs = 3000, children }: Props) {
           <button
             onClick={prev}
             aria-label="Previous slide"
-            className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/30 p-2 text-primary-foreground backdrop-blur transition hover:bg-background/50 sm:left-6 sm:p-3"
+            className="absolute left-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 p-2.5 text-primary-foreground backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-white/25 sm:left-6 sm:p-3.5"
           >
             <ChevronLeft className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
           <button
             onClick={next}
             aria-label="Next slide"
-            className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full bg-background/30 p-2 text-primary-foreground backdrop-blur transition hover:bg-background/50 sm:right-6 sm:p-3"
+            className="absolute right-3 top-1/2 z-20 -translate-y-1/2 rounded-full border border-white/20 bg-white/10 p-2.5 text-primary-foreground backdrop-blur-md transition-all duration-300 hover:scale-110 hover:bg-white/25 sm:right-6 sm:p-3.5"
           >
             <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6" />
           </button>
 
-          <div className="absolute bottom-5 left-1/2 z-20 flex -translate-x-1/2 gap-2">
+          <div className="absolute bottom-7 left-1/2 z-20 flex -translate-x-1/2 gap-2">
             {slides.map((s, i) => (
               <button
                 key={s.id}
                 onClick={() => goTo(i)}
                 aria-label={`Go to slide ${i + 1}`}
-                className={`h-2.5 rounded-full transition-all ${
+                className={`h-2 rounded-full transition-all duration-500 ${
                   i === index
-                    ? "w-8 bg-primary-foreground"
-                    : "w-2.5 bg-primary-foreground/50 hover:bg-primary-foreground/80"
+                    ? "w-10 bg-primary-foreground shadow-[0_0_12px_rgba(255,255,255,0.6)]"
+                    : "w-2 bg-primary-foreground/50 hover:w-4 hover:bg-primary-foreground/80"
                 }`}
               />
             ))}
