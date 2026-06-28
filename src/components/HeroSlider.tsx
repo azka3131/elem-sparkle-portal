@@ -51,29 +51,36 @@ export function HeroSlider({ slides, intervalMs = 3000, children }: Props) {
       {slides.map((s, i) => (
         <div
           key={s.id}
-          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+          className={`absolute inset-0 transition-opacity duration-[1200ms] ease-in-out ${
             i === index ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden={i !== index}
         >
-          <img src={s.image} alt={s.title ?? ""} className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/45 to-black/70" />
+          <img
+            src={s.image}
+            alt={s.title ?? ""}
+            className={`h-full w-full object-cover transition-transform duration-[6000ms] ease-out ${
+              i === index ? "scale-105" : "scale-100"
+            }`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/30 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-transparent to-transparent" />
         </div>
       ))}
 
-      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl text-primary-foreground">
+      <div className="relative z-10 mx-auto flex h-full max-w-7xl items-end px-4 pb-24 sm:px-6 sm:pb-28 lg:items-center lg:px-8 lg:pb-0">
+        <div key={index} className="max-w-2xl text-primary-foreground">
           {slides[index].title && (
-            <h1 className="font-display text-4xl font-bold leading-tight drop-shadow-md sm:text-5xl md:text-6xl">
+            <h1 className="hero-fade-up font-display text-4xl font-bold leading-[1.05] tracking-tight drop-shadow-lg sm:text-5xl md:text-6xl lg:text-7xl text-balance">
               {slides[index].title}
             </h1>
           )}
           {slides[index].subtitle && (
-            <p className="mt-4 text-lg text-primary-foreground/90 sm:text-xl">
+            <p className="hero-fade-up-delay mt-5 max-w-xl text-base text-primary-foreground/95 sm:text-lg md:text-xl text-pretty">
               {slides[index].subtitle}
             </p>
           )}
-          {children && <div className="mt-8">{children}</div>}
+          {children && <div className="hero-fade-up-delay mt-8">{children}</div>}
         </div>
       </div>
 
