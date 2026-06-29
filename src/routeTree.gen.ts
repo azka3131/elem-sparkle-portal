@@ -17,6 +17,7 @@ import { Route as AnnouncementsRouteImport } from './routes/announcements'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnnouncementsIndexRouteImport } from './routes/announcements.index'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as ProfileVisionRouteImport } from './routes/profile.vision'
 import { Route as ProfileStructureRouteImport } from './routes/profile.structure'
 import { Route as ProfileHistoryRouteImport } from './routes/profile.history'
@@ -24,7 +25,20 @@ import { Route as NewsSchoolRouteImport } from './routes/news.school'
 import { Route as NewsAnnouncementsRouteImport } from './routes/news.announcements'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as AnnouncementsSlugRouteImport } from './routes/announcements.$slug'
+import { Route as AdminUsersRouteImport } from './routes/admin.users'
+import { Route as AdminTeachersRouteImport } from './routes/admin.teachers'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminProfileRouteImport } from './routes/admin.profile'
+import { Route as AdminPpdbRouteImport } from './routes/admin.ppdb'
+import { Route as AdminNewsRouteImport } from './routes/admin.news'
+import { Route as AdminMessagesRouteImport } from './routes/admin.messages'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as AdminHomepageRouteImport } from './routes/admin.homepage'
+import { Route as AdminHeroRouteImport } from './routes/admin.hero'
+import { Route as AdminGalleryRouteImport } from './routes/admin.gallery'
+import { Route as AdminFacilitiesRouteImport } from './routes/admin.facilities'
+import { Route as AdminAnnouncementsRouteImport } from './routes/admin.announcements'
+import { Route as AdminAchievementsRouteImport } from './routes/admin.achievements'
 import { Route as NewsAnnouncementsIndexRouteImport } from './routes/news.announcements.index'
 import { Route as NewsAnnouncementsSlugRouteImport } from './routes/news.announcements.$slug'
 
@@ -68,6 +82,11 @@ const AnnouncementsIndexRoute = AnnouncementsIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AnnouncementsRoute,
 } as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ProfileVisionRoute = ProfileVisionRouteImport.update({
   id: '/profile/vision',
   path: '/profile/vision',
@@ -103,9 +122,74 @@ const AnnouncementsSlugRoute = AnnouncementsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => AnnouncementsRoute,
 } as any)
+const AdminUsersRoute = AdminUsersRouteImport.update({
+  id: '/admin/users',
+  path: '/admin/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTeachersRoute = AdminTeachersRouteImport.update({
+  id: '/admin/teachers',
+  path: '/admin/teachers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/admin/settings',
+  path: '/admin/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/admin/profile',
+  path: '/admin/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPpdbRoute = AdminPpdbRouteImport.update({
+  id: '/admin/ppdb',
+  path: '/admin/ppdb',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminNewsRoute = AdminNewsRouteImport.update({
+  id: '/admin/news',
+  path: '/admin/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMessagesRoute = AdminMessagesRouteImport.update({
+  id: '/admin/messages',
+  path: '/admin/messages',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLoginRoute = AdminLoginRouteImport.update({
   id: '/admin/login',
   path: '/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminHomepageRoute = AdminHomepageRouteImport.update({
+  id: '/admin/homepage',
+  path: '/admin/homepage',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminHeroRoute = AdminHeroRouteImport.update({
+  id: '/admin/hero',
+  path: '/admin/hero',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminGalleryRoute = AdminGalleryRouteImport.update({
+  id: '/admin/gallery',
+  path: '/admin/gallery',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminFacilitiesRoute = AdminFacilitiesRouteImport.update({
+  id: '/admin/facilities',
+  path: '/admin/facilities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAnnouncementsRoute = AdminAnnouncementsRouteImport.update({
+  id: '/admin/announcements',
+  path: '/admin/announcements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAchievementsRoute = AdminAchievementsRouteImport.update({
+  id: '/admin/achievements',
+  path: '/admin/achievements',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsAnnouncementsIndexRoute = NewsAnnouncementsIndexRouteImport.update({
@@ -127,7 +211,20 @@ export interface FileRoutesByFullPath {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/facilities': typeof AdminFacilitiesRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/homepage': typeof AdminHomepageRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/ppdb': typeof AdminPpdbRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/teachers': typeof AdminTeachersRoute
+  '/admin/users': typeof AdminUsersRoute
   '/announcements/$slug': typeof AnnouncementsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
@@ -135,6 +232,7 @@ export interface FileRoutesByFullPath {
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/admin/': typeof AdminIndexRoute
   '/announcements/': typeof AnnouncementsIndexRoute
   '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
   '/news/announcements/': typeof NewsAnnouncementsIndexRoute
@@ -146,13 +244,27 @@ export interface FileRoutesByTo {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/facilities': typeof AdminFacilitiesRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/homepage': typeof AdminHomepageRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/ppdb': typeof AdminPpdbRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/teachers': typeof AdminTeachersRoute
+  '/admin/users': typeof AdminUsersRoute
   '/announcements/$slug': typeof AnnouncementsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/school': typeof NewsSchoolRoute
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/admin': typeof AdminIndexRoute
   '/announcements': typeof AnnouncementsIndexRoute
   '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
   '/news/announcements': typeof NewsAnnouncementsIndexRoute
@@ -166,7 +278,20 @@ export interface FileRoutesById {
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
   '/teachers': typeof TeachersRoute
+  '/admin/achievements': typeof AdminAchievementsRoute
+  '/admin/announcements': typeof AdminAnnouncementsRoute
+  '/admin/facilities': typeof AdminFacilitiesRoute
+  '/admin/gallery': typeof AdminGalleryRoute
+  '/admin/hero': typeof AdminHeroRoute
+  '/admin/homepage': typeof AdminHomepageRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/messages': typeof AdminMessagesRoute
+  '/admin/news': typeof AdminNewsRoute
+  '/admin/ppdb': typeof AdminPpdbRoute
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/settings': typeof AdminSettingsRoute
+  '/admin/teachers': typeof AdminTeachersRoute
+  '/admin/users': typeof AdminUsersRoute
   '/announcements/$slug': typeof AnnouncementsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
@@ -174,6 +299,7 @@ export interface FileRoutesById {
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/admin/': typeof AdminIndexRoute
   '/announcements/': typeof AnnouncementsIndexRoute
   '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
   '/news/announcements/': typeof NewsAnnouncementsIndexRoute
@@ -188,7 +314,20 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/achievements'
+    | '/admin/announcements'
+    | '/admin/facilities'
+    | '/admin/gallery'
+    | '/admin/hero'
+    | '/admin/homepage'
     | '/admin/login'
+    | '/admin/messages'
+    | '/admin/news'
+    | '/admin/ppdb'
+    | '/admin/profile'
+    | '/admin/settings'
+    | '/admin/teachers'
+    | '/admin/users'
     | '/announcements/$slug'
     | '/news/$slug'
     | '/news/announcements'
@@ -196,6 +335,7 @@ export interface FileRouteTypes {
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/admin/'
     | '/announcements/'
     | '/news/announcements/$slug'
     | '/news/announcements/'
@@ -207,13 +347,27 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/achievements'
+    | '/admin/announcements'
+    | '/admin/facilities'
+    | '/admin/gallery'
+    | '/admin/hero'
+    | '/admin/homepage'
     | '/admin/login'
+    | '/admin/messages'
+    | '/admin/news'
+    | '/admin/ppdb'
+    | '/admin/profile'
+    | '/admin/settings'
+    | '/admin/teachers'
+    | '/admin/users'
     | '/announcements/$slug'
     | '/news/$slug'
     | '/news/school'
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/admin'
     | '/announcements'
     | '/news/announcements/$slug'
     | '/news/announcements'
@@ -226,7 +380,20 @@ export interface FileRouteTypes {
     | '/gallery'
     | '/ppdb'
     | '/teachers'
+    | '/admin/achievements'
+    | '/admin/announcements'
+    | '/admin/facilities'
+    | '/admin/gallery'
+    | '/admin/hero'
+    | '/admin/homepage'
     | '/admin/login'
+    | '/admin/messages'
+    | '/admin/news'
+    | '/admin/ppdb'
+    | '/admin/profile'
+    | '/admin/settings'
+    | '/admin/teachers'
+    | '/admin/users'
     | '/announcements/$slug'
     | '/news/$slug'
     | '/news/announcements'
@@ -234,6 +401,7 @@ export interface FileRouteTypes {
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/admin/'
     | '/announcements/'
     | '/news/announcements/$slug'
     | '/news/announcements/'
@@ -247,13 +415,27 @@ export interface RootRouteChildren {
   GalleryRoute: typeof GalleryRoute
   PpdbRoute: typeof PpdbRoute
   TeachersRoute: typeof TeachersRoute
+  AdminAchievementsRoute: typeof AdminAchievementsRoute
+  AdminAnnouncementsRoute: typeof AdminAnnouncementsRoute
+  AdminFacilitiesRoute: typeof AdminFacilitiesRoute
+  AdminGalleryRoute: typeof AdminGalleryRoute
+  AdminHeroRoute: typeof AdminHeroRoute
+  AdminHomepageRoute: typeof AdminHomepageRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminMessagesRoute: typeof AdminMessagesRoute
+  AdminNewsRoute: typeof AdminNewsRoute
+  AdminPpdbRoute: typeof AdminPpdbRoute
+  AdminProfileRoute: typeof AdminProfileRoute
+  AdminSettingsRoute: typeof AdminSettingsRoute
+  AdminTeachersRoute: typeof AdminTeachersRoute
+  AdminUsersRoute: typeof AdminUsersRoute
   NewsSlugRoute: typeof NewsSlugRoute
   NewsAnnouncementsRoute: typeof NewsAnnouncementsRouteWithChildren
   NewsSchoolRoute: typeof NewsSchoolRoute
   ProfileHistoryRoute: typeof ProfileHistoryRoute
   ProfileStructureRoute: typeof ProfileStructureRoute
   ProfileVisionRoute: typeof ProfileVisionRoute
+  AdminIndexRoute: typeof AdminIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -314,6 +496,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnnouncementsIndexRouteImport
       parentRoute: typeof AnnouncementsRoute
     }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/profile/vision': {
       id: '/profile/vision'
       path: '/profile/vision'
@@ -363,11 +552,102 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AnnouncementsSlugRouteImport
       parentRoute: typeof AnnouncementsRoute
     }
+    '/admin/users': {
+      id: '/admin/users'
+      path: '/admin/users'
+      fullPath: '/admin/users'
+      preLoaderRoute: typeof AdminUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/teachers': {
+      id: '/admin/teachers'
+      path: '/admin/teachers'
+      fullPath: '/admin/teachers'
+      preLoaderRoute: typeof AdminTeachersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/admin/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/admin/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/ppdb': {
+      id: '/admin/ppdb'
+      path: '/admin/ppdb'
+      fullPath: '/admin/ppdb'
+      preLoaderRoute: typeof AdminPpdbRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/news': {
+      id: '/admin/news'
+      path: '/admin/news'
+      fullPath: '/admin/news'
+      preLoaderRoute: typeof AdminNewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/messages': {
+      id: '/admin/messages'
+      path: '/admin/messages'
+      fullPath: '/admin/messages'
+      preLoaderRoute: typeof AdminMessagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/login': {
       id: '/admin/login'
       path: '/admin/login'
       fullPath: '/admin/login'
       preLoaderRoute: typeof AdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/homepage': {
+      id: '/admin/homepage'
+      path: '/admin/homepage'
+      fullPath: '/admin/homepage'
+      preLoaderRoute: typeof AdminHomepageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/hero': {
+      id: '/admin/hero'
+      path: '/admin/hero'
+      fullPath: '/admin/hero'
+      preLoaderRoute: typeof AdminHeroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/gallery': {
+      id: '/admin/gallery'
+      path: '/admin/gallery'
+      fullPath: '/admin/gallery'
+      preLoaderRoute: typeof AdminGalleryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/facilities': {
+      id: '/admin/facilities'
+      path: '/admin/facilities'
+      fullPath: '/admin/facilities'
+      preLoaderRoute: typeof AdminFacilitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/announcements': {
+      id: '/admin/announcements'
+      path: '/admin/announcements'
+      fullPath: '/admin/announcements'
+      preLoaderRoute: typeof AdminAnnouncementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/achievements': {
+      id: '/admin/achievements'
+      path: '/admin/achievements'
+      fullPath: '/admin/achievements'
+      preLoaderRoute: typeof AdminAchievementsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news/announcements/': {
@@ -422,13 +702,27 @@ const rootRouteChildren: RootRouteChildren = {
   GalleryRoute: GalleryRoute,
   PpdbRoute: PpdbRoute,
   TeachersRoute: TeachersRoute,
+  AdminAchievementsRoute: AdminAchievementsRoute,
+  AdminAnnouncementsRoute: AdminAnnouncementsRoute,
+  AdminFacilitiesRoute: AdminFacilitiesRoute,
+  AdminGalleryRoute: AdminGalleryRoute,
+  AdminHeroRoute: AdminHeroRoute,
+  AdminHomepageRoute: AdminHomepageRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminMessagesRoute: AdminMessagesRoute,
+  AdminNewsRoute: AdminNewsRoute,
+  AdminPpdbRoute: AdminPpdbRoute,
+  AdminProfileRoute: AdminProfileRoute,
+  AdminSettingsRoute: AdminSettingsRoute,
+  AdminTeachersRoute: AdminTeachersRoute,
+  AdminUsersRoute: AdminUsersRoute,
   NewsSlugRoute: NewsSlugRoute,
   NewsAnnouncementsRoute: NewsAnnouncementsRouteWithChildren,
   NewsSchoolRoute: NewsSchoolRoute,
   ProfileHistoryRoute: ProfileHistoryRoute,
   ProfileStructureRoute: ProfileStructureRoute,
   ProfileVisionRoute: ProfileVisionRoute,
+  AdminIndexRoute: AdminIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
