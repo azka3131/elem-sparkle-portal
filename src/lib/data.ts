@@ -234,7 +234,38 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "/attachments/Agenda-Rapat-Semester-Genap.doc" },
     ],
   },
+  {
+    id: 9,
+    slug: "jadwal-ujian-akhir-semester-genap",
+    title: "Jadwal Ujian Akhir Semester Genap 2026",
+    date: "2 April 2026",
+    category: "Pengumuman",
+    type: "announcement",
+    excerpt:
+      "Jadwal lengkap Ujian Akhir Semester Genap untuk seluruh jenjang kelas telah dirilis.",
+    image: "https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1600&q=80",
+    author: "Bidang Kurikulum",
+    content: lorem("Jadwal Ujian Akhir Semester Genap"),
+    attachments: [
+      { name: "Jadwal-UAS-Genap-2026.pdf", size: "164 KB", kind: "pdf", url: "/attachments/Surat-Edaran-Libur-Hari-Raya.pdf" },
+      { name: "Kisi-Kisi-UAS.xlsx", size: "78 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
+    ],
+  },
+  {
+    id: 10,
+    slug: "vaksinasi-dan-pemeriksaan-kesehatan",
+    title: "Vaksinasi & Pemeriksaan Kesehatan Berkala",
+    date: "25 Maret 2026",
+    category: "Pengumuman",
+    type: "announcement",
+    excerpt:
+      "Bekerja sama dengan Puskesmas, sekolah akan mengadakan vaksinasi dan pemeriksaan kesehatan untuk seluruh siswa.",
+    image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80",
+    author: "Unit Kesehatan Sekolah",
+    content: lorem("Vaksinasi & Pemeriksaan Kesehatan Berkala"),
+  },
 ];
+
 
 export const NEWS = NEWS_DATA;
 export const SCHOOL_NEWS = NEWS_DATA.filter((n) => n.type === "news");
@@ -443,7 +474,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Berita",
     children: [
       { to: "/news/school", label: "Berita Sekolah" },
-      { to: "/news/announcements", label: "Pengumuman" },
+      { to: "/announcements", label: "Pengumuman" },
     ],
   },
   { to: "/ppdb", label: "PPDB" },
@@ -458,7 +489,7 @@ export const FOOTER_LINKS: NavChild[] = [
   { to: "/profile/vision", label: "Visi & Misi" },
   { to: "/teachers", label: "Guru & Staf" },
   { to: "/news/school", label: "Berita Sekolah" },
-  { to: "/news/announcements", label: "Pengumuman" },
+  { to: "/announcements", label: "Pengumuman" },
   { to: "/ppdb", label: "PPDB" },
   { to: "/gallery", label: "Galeri" },
   { to: "/achievements", label: "Prestasi" },
