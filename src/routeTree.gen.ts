@@ -16,6 +16,7 @@ import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as AnnouncementsRouteImport } from './routes/announcements'
 import { Route as AchievementsRouteImport } from './routes/achievements'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AnnouncementsIndexRouteImport } from './routes/announcements.index'
 import { Route as ProfileVisionRouteImport } from './routes/profile.vision'
 import { Route as ProfileStructureRouteImport } from './routes/profile.structure'
 import { Route as ProfileHistoryRouteImport } from './routes/profile.history'
@@ -24,6 +25,7 @@ import { Route as NewsAnnouncementsRouteImport } from './routes/news.announcemen
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as AnnouncementsSlugRouteImport } from './routes/announcements.$slug'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
+import { Route as NewsAnnouncementsIndexRouteImport } from './routes/news.announcements.index'
 import { Route as NewsAnnouncementsSlugRouteImport } from './routes/news.announcements.$slug'
 
 const TeachersRoute = TeachersRouteImport.update({
@@ -60,6 +62,11 @@ const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AnnouncementsIndexRoute = AnnouncementsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AnnouncementsRoute,
 } as any)
 const ProfileVisionRoute = ProfileVisionRouteImport.update({
   id: '/profile/vision',
@@ -101,6 +108,11 @@ const AdminLoginRoute = AdminLoginRouteImport.update({
   path: '/admin/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsAnnouncementsIndexRoute = NewsAnnouncementsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => NewsAnnouncementsRoute,
+} as any)
 const NewsAnnouncementsSlugRoute = NewsAnnouncementsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -123,12 +135,13 @@ export interface FileRoutesByFullPath {
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/announcements/': typeof AnnouncementsIndexRoute
   '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
+  '/news/announcements/': typeof NewsAnnouncementsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/achievements': typeof AchievementsRoute
-  '/announcements': typeof AnnouncementsRouteWithChildren
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
   '/ppdb': typeof PpdbRoute
@@ -136,12 +149,13 @@ export interface FileRoutesByTo {
   '/admin/login': typeof AdminLoginRoute
   '/announcements/$slug': typeof AnnouncementsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
-  '/news/announcements': typeof NewsAnnouncementsRouteWithChildren
   '/news/school': typeof NewsSchoolRoute
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/announcements': typeof AnnouncementsIndexRoute
   '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
+  '/news/announcements': typeof NewsAnnouncementsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -160,7 +174,9 @@ export interface FileRoutesById {
   '/profile/history': typeof ProfileHistoryRoute
   '/profile/structure': typeof ProfileStructureRoute
   '/profile/vision': typeof ProfileVisionRoute
+  '/announcements/': typeof AnnouncementsIndexRoute
   '/news/announcements/$slug': typeof NewsAnnouncementsSlugRoute
+  '/news/announcements/': typeof NewsAnnouncementsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -180,12 +196,13 @@ export interface FileRouteTypes {
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/announcements/'
     | '/news/announcements/$slug'
+    | '/news/announcements/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/achievements'
-    | '/announcements'
     | '/facilities'
     | '/gallery'
     | '/ppdb'
@@ -193,12 +210,13 @@ export interface FileRouteTypes {
     | '/admin/login'
     | '/announcements/$slug'
     | '/news/$slug'
-    | '/news/announcements'
     | '/news/school'
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/announcements'
     | '/news/announcements/$slug'
+    | '/news/announcements'
   id:
     | '__root__'
     | '/'
@@ -216,7 +234,9 @@ export interface FileRouteTypes {
     | '/profile/history'
     | '/profile/structure'
     | '/profile/vision'
+    | '/announcements/'
     | '/news/announcements/$slug'
+    | '/news/announcements/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -287,6 +307,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/announcements/': {
+      id: '/announcements/'
+      path: '/'
+      fullPath: '/announcements/'
+      preLoaderRoute: typeof AnnouncementsIndexRouteImport
+      parentRoute: typeof AnnouncementsRoute
+    }
     '/profile/vision': {
       id: '/profile/vision'
       path: '/profile/vision'
@@ -343,6 +370,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminLoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/announcements/': {
+      id: '/news/announcements/'
+      path: '/'
+      fullPath: '/news/announcements/'
+      preLoaderRoute: typeof NewsAnnouncementsIndexRouteImport
+      parentRoute: typeof NewsAnnouncementsRoute
+    }
     '/news/announcements/$slug': {
       id: '/news/announcements/$slug'
       path: '/$slug'
@@ -355,10 +389,12 @@ declare module '@tanstack/react-router' {
 
 interface AnnouncementsRouteChildren {
   AnnouncementsSlugRoute: typeof AnnouncementsSlugRoute
+  AnnouncementsIndexRoute: typeof AnnouncementsIndexRoute
 }
 
 const AnnouncementsRouteChildren: AnnouncementsRouteChildren = {
   AnnouncementsSlugRoute: AnnouncementsSlugRoute,
+  AnnouncementsIndexRoute: AnnouncementsIndexRoute,
 }
 
 const AnnouncementsRouteWithChildren = AnnouncementsRoute._addFileChildren(
@@ -367,10 +403,12 @@ const AnnouncementsRouteWithChildren = AnnouncementsRoute._addFileChildren(
 
 interface NewsAnnouncementsRouteChildren {
   NewsAnnouncementsSlugRoute: typeof NewsAnnouncementsSlugRoute
+  NewsAnnouncementsIndexRoute: typeof NewsAnnouncementsIndexRoute
 }
 
 const NewsAnnouncementsRouteChildren: NewsAnnouncementsRouteChildren = {
   NewsAnnouncementsSlugRoute: NewsAnnouncementsSlugRoute,
+  NewsAnnouncementsIndexRoute: NewsAnnouncementsIndexRoute,
 }
 
 const NewsAnnouncementsRouteWithChildren =

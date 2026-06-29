@@ -1,31 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader } from "@/components/PageHeader";
-import { AnnouncementGrid } from "@/components/AnnouncementGrid";
-import { ANNOUNCEMENTS } from "@/lib/data";
+import { createFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/announcements")({
-  head: () => ({
-    meta: [
-      { title: "Pengumuman — SD Cendekia Harapan" },
-      {
-        name: "description",
-        content: "Pengumuman resmi dan berkas penting dari SD Cendekia Harapan.",
-      },
-    ],
-  }),
-  component: AnnouncementsPage,
+  component: () => <Outlet />,
 });
-
-function AnnouncementsPage() {
-  return (
-    <>
-      <PageHeader
-        title="Pengumuman"
-        subtitle="Informasi resmi dan berkas penting untuk orang tua, siswa, dan masyarakat."
-      />
-      <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <AnnouncementGrid items={ANNOUNCEMENTS} />
-      </section>
-    </>
-  );
-}
