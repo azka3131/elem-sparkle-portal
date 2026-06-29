@@ -2,7 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { AttachmentList } from "@/components/AttachmentList";
 import type { NewsArticle } from "@/lib/data";
+
 
 interface Props {
   article: NewsArticle;
