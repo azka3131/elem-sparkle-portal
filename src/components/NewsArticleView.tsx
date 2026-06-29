@@ -2,7 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { AttachmentList } from "@/components/AttachmentList";
 import type { NewsArticle } from "@/lib/data";
+
 
 interface Props {
   article: NewsArticle;
@@ -45,6 +47,12 @@ export function NewsArticleView({ article, backTo, backLabel }: Props) {
             <p key={i}>{p}</p>
           ))}
         </div>
+
+        {article.attachments && article.attachments.length > 0 && (
+          <AttachmentList attachments={article.attachments} />
+        )}
+
+
 
         <div className="mt-10 border-t border-border pt-6">
           <Button asChild variant="ghost">

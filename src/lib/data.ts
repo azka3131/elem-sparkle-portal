@@ -157,9 +157,9 @@ const NEWS_DATA: NewsArticle[] = [
     author: "Panitia PPDB",
     content: lorem("Pembukaan PPDB 2026/2027"),
     attachments: [
-      { name: "Formulir-Pendaftaran-PPDB-2026.pdf", size: "248 KB", kind: "pdf", url: "#" },
-      { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "#" },
-      { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "#" },
+      { name: "Formulir-Pendaftaran-PPDB-2026.pdf", size: "248 KB", kind: "pdf", url: "/attachments/Formulir-Pendaftaran-PPDB-2026.pdf" },
+      { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "/attachments/Panduan-PPDB-2026.docx" },
+      { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
     ],
   },
   {
@@ -213,8 +213,8 @@ const NEWS_DATA: NewsArticle[] = [
     author: "Tata Usaha",
     content: lorem("Libur Hari Raya & Penyesuaian Jadwal"),
     attachments: [
-      { name: "Surat-Edaran-Libur-Hari-Raya.pdf", size: "186 KB", kind: "pdf", url: "#" },
-      { name: "Materi-Pembelajaran-Daring.zip", size: "4.2 MB", kind: "zip", url: "#" },
+      { name: "Surat-Edaran-Libur-Hari-Raya.pdf", size: "186 KB", kind: "pdf", url: "/attachments/Surat-Edaran-Libur-Hari-Raya.pdf" },
+      { name: "Materi-Pembelajaran-Daring.zip", size: "4.2 MB", kind: "zip", url: "/attachments/Materi-Pembelajaran-Daring.zip" },
     ],
   },
   {
@@ -230,8 +230,8 @@ const NEWS_DATA: NewsArticle[] = [
     author: "Komite Sekolah",
     content: lorem("Rapat Orang Tua Murid Semester Genap"),
     attachments: [
-      { name: "Undangan-Rapat-Orang-Tua.pdf", size: "92 KB", kind: "pdf", url: "#" },
-      { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "#" },
+      { name: "Undangan-Rapat-Orang-Tua.pdf", size: "92 KB", kind: "pdf", url: "/attachments/Undangan-Rapat-Orang-Tua.pdf" },
+      { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "/attachments/Agenda-Rapat-Semester-Genap.doc" },
     ],
   },
 ];
