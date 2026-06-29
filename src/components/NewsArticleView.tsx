@@ -48,6 +48,12 @@ export function NewsArticleView({ article, backTo, backLabel }: Props) {
           ))}
         </div>
 
+        {article.attachments && article.attachments.length > 0 && (
+          <AttachmentList attachments={article.attachments} />
+        )}
+
+
+
         <div className="mt-10 border-t border-border pt-6">
           <Button asChild variant="ghost">
             <Link to={backTo}>
