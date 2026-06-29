@@ -474,7 +474,7 @@ export const NAV_ITEMS: NavItem[] = [
     label: "Berita",
     children: [
       { to: "/news/school", label: "Berita Sekolah" },
-      { to: "/news/announcements", label: "Pengumuman" },
+      { to: "/announcements", label: "Pengumuman" },
     ],
   },
   { to: "/ppdb", label: "PPDB" },
@@ -489,7 +489,7 @@ export const FOOTER_LINKS: NavChild[] = [
   { to: "/profile/vision", label: "Visi & Misi" },
   { to: "/teachers", label: "Guru & Staf" },
   { to: "/news/school", label: "Berita Sekolah" },
-  { to: "/news/announcements", label: "Pengumuman" },
+  { to: "/announcements", label: "Pengumuman" },
   { to: "/ppdb", label: "PPDB" },
   { to: "/gallery", label: "Galeri" },
   { to: "/achievements", label: "Prestasi" },
