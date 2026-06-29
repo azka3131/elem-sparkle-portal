@@ -157,9 +157,9 @@ const NEWS_DATA: NewsArticle[] = [
     author: "Panitia PPDB",
     content: lorem("Pembukaan PPDB 2026/2027"),
     attachments: [
-      { name: "Formulir-Pendaftaran-PPDB-2026.pdf", size: "248 KB", kind: "pdf", url: "#" },
-      { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "#" },
-      { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "#" },
+      { name: "Formulir-Pendaftaran-PPDB-2026.pdf", size: "248 KB", kind: "pdf", url: "/attachments/Formulir-Pendaftaran-PPDB-2026.pdf" },
+      { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "/attachments/Panduan-PPDB-2026.docx" },
+      { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
     ],
   },
   {
