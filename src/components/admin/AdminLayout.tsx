@@ -208,7 +208,7 @@ export function AdminLayout({ title, breadcrumbs = [], actions, children }: Admi
                   Pengaturan
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate({ to: "/admin/login" })}>
-                  Logout
+                  Keluar
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
