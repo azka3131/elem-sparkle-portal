@@ -127,10 +127,10 @@ export function AdminLayout({ title, breadcrumbs = [], actions, children }: Admi
         <button
           onClick={() => navigate({ to: "/admin/login" })}
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-destructive"
-          title={collapsed ? "Logout" : undefined}
+          title={collapsed ? "Keluar" : undefined}
         >
           <LogOut className="h-4 w-4 shrink-0" />
-          {!collapsed && <span>Logout</span>}
+          {!collapsed && <span>Keluar</span>}
         </button>
       </div>
     </div>
