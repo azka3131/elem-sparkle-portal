@@ -1,3 +1,5 @@
+export type MessageStatus = "Baru" | "Sudah Dibaca" | "Sudah Dibalas";
+
 export interface Message {
   id: number;
   name: string;
@@ -5,7 +7,7 @@ export interface Message {
   email: string;
   message: string;
   date: string;
-  read: boolean;
+  status: MessageStatus;
 }
 
 export const MESSAGES: Message[] = [
@@ -16,7 +18,7 @@ export const MESSAGES: Message[] = [
     email: "budi@email.com",
     message: "Mohon informasi mengenai jadwal pendaftaran PPDB 2026/2027.",
     date: "28 Juni 2026",
-    read: false,
+    status: "Baru",
   },
   {
     id: 2,
@@ -25,7 +27,7 @@ export const MESSAGES: Message[] = [
     email: "ani.w@email.com",
     message: "Apakah ada program beasiswa untuk siswa berprestasi?",
     date: "27 Juni 2026",
-    read: false,
+    status: "Baru",
   },
   {
     id: 3,
@@ -34,7 +36,7 @@ export const MESSAGES: Message[] = [
     email: "hendra.k@email.com",
     message: "Saya ingin berkunjung untuk melihat fasilitas sekolah.",
     date: "25 Juni 2026",
-    read: true,
+    status: "Sudah Dibaca",
   },
   {
     id: 4,
@@ -43,7 +45,7 @@ export const MESSAGES: Message[] = [
     email: "siti.m@email.com",
     message: "Kapan jadwal pembagian rapor semester genap?",
     date: "22 Juni 2026",
-    read: true,
+    status: "Sudah Dibalas",
   },
   {
     id: 5,
@@ -52,7 +54,7 @@ export const MESSAGES: Message[] = [
     email: "rizky@email.com",
     message: "Mohon info ekstrakurikuler yang tersedia tahun ajaran ini.",
     date: "20 Juni 2026",
-    read: true,
+    status: "Sudah Dibalas",
   },
 ];
 

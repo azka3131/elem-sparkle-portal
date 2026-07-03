@@ -50,20 +50,20 @@ const MENU: MenuItem[] = [
     icon: Home,
     children: [
       { label: "Hero Slider", to: "/admin/hero" },
-      { label: "Homepage", to: "/admin/homepage" },
+      { label: "Beranda", to: "/admin/homepage" },
     ],
   },
-  { label: "School Profile", to: "/admin/profile", icon: BookOpen },
-  { label: "Teachers & Staff", to: "/admin/teachers", icon: Users },
-  { label: "News", to: "/admin/news", icon: Newspaper },
-  { label: "Announcements", to: "/admin/announcements", icon: Megaphone },
+  { label: "Profil Sekolah", to: "/admin/profile", icon: BookOpen },
+  { label: "Guru & Staf", to: "/admin/teachers", icon: Users },
+  { label: "Berita", to: "/admin/news", icon: Newspaper },
+  { label: "Pengumuman", to: "/admin/announcements", icon: Megaphone },
   { label: "PPDB", to: "/admin/ppdb", icon: GraduationCap },
-  { label: "Gallery", to: "/admin/gallery", icon: ImageIcon },
-  { label: "Achievements", to: "/admin/achievements", icon: Trophy },
-  { label: "Facilities", to: "/admin/facilities", icon: Building2 },
-  { label: "Messages", to: "/admin/messages", icon: Mail },
-  { label: "Website Settings", to: "/admin/settings", icon: Settings },
-  { label: "Users", to: "/admin/users", icon: UserCog },
+  { label: "Galeri", to: "/admin/gallery", icon: ImageIcon },
+  { label: "Prestasi", to: "/admin/achievements", icon: Trophy },
+  { label: "Fasilitas", to: "/admin/facilities", icon: Building2 },
+  { label: "Pesan Masuk", to: "/admin/messages", icon: Mail },
+  { label: "Pengaturan Website", to: "/admin/settings", icon: Settings },
+  { label: "Pengguna", to: "/admin/users", icon: UserCog },
 ];
 
 interface AdminLayoutProps {
@@ -127,10 +127,10 @@ export function AdminLayout({ title, breadcrumbs = [], actions, children }: Admi
         <button
           onClick={() => navigate({ to: "/admin/login" })}
           className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-sidebar-foreground/80 transition-colors hover:bg-sidebar-accent hover:text-destructive"
-          title={collapsed ? "Logout" : undefined}
+          title={collapsed ? "Keluar" : undefined}
         >
           <LogOut className="h-4 w-4 shrink-0" />
-          {!collapsed && <span>Logout</span>}
+          {!collapsed && <span>Keluar</span>}
         </button>
       </div>
     </div>
@@ -208,7 +208,7 @@ export function AdminLayout({ title, breadcrumbs = [], actions, children }: Admi
                   Pengaturan
                 </DropdownMenuItem>
                 <DropdownMenuItem onClick={() => navigate({ to: "/admin/login" })}>
-                  Logout
+                  Keluar
                 </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

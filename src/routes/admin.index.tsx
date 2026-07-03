@@ -126,7 +126,7 @@ function DashboardHome() {
                 <div className="min-w-0 flex-1">
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="text-sm font-semibold">{m.name}</p>
-                    {!m.read && <Badge className="h-5">Baru</Badge>}
+                    {m.status === "Baru" && <Badge className="h-5">Baru</Badge>}
                     <span className="ml-auto text-xs text-muted-foreground">{m.date}</span>
                   </div>
                   <p className="line-clamp-1 text-sm text-muted-foreground">{m.message}</p>
