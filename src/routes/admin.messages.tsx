@@ -75,7 +75,7 @@ function MessagesAdmin() {
   };
 
   const handleEmail = (m: Message) => {
-    window.location.href = `mailto:${m.email}`;
+    window.open(gmailComposeLink(m.email), "_blank", "noopener,noreferrer");
     setStatus(m.id, "Sudah Dibalas");
   };
 
