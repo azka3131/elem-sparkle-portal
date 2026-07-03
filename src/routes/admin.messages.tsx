@@ -42,6 +42,14 @@ function waLink(phone: string) {
   return `https://wa.me/${toWaNumber(phone)}`;
 }
 
+function gmailComposeLink(email: string) {
+  const subject = encodeURIComponent("Balasan Pesan dari SD Negeri Dukuhbenda 02");
+  const body = encodeURIComponent(
+    "Yth. Bapak/Ibu,\n\nTerima kasih telah menghubungi SD Negeri Dukuhbenda 02.\n\nPesan Anda telah kami terima dan berikut adalah tanggapan dari pihak sekolah.\n\n--------------------------------------------------\n\n(Tulis balasan di sini)\n\n--------------------------------------------------\n\nHormat kami,\nOperator Website\nSD Negeri Dukuhbenda 02"
+  );
+  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${subject}&body=${body}`;
+}
+
 function statusBadge(status: MessageStatus) {
   if (status === "Baru")
     return <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">Baru</Badge>;
@@ -75,7 +83,7 @@ function MessagesAdmin() {
   };
 
   const handleEmail = (m: Message) => {
-    window.location.href = `mailto:${m.email}`;
+    window.open(gmailComposeLink(m.email), "_blank", "noopener,noreferrer");
     setStatus(m.id, "Sudah Dibalas");
   };
 
@@ -114,7 +122,9 @@ function MessagesAdmin() {
                     </TableCell>
                     <TableCell>
                       <a
-                        href={`mailto:${m.email}`}
+                        href={gmailComposeLink(m.email)}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => setStatus(m.id, "Sudah Dibalas")}
                         className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
                       >
@@ -200,7 +210,9 @@ function MessagesAdmin() {
                 <span className="col-span-2 font-medium">{viewing.name}</span>
                 <span className="text-muted-foreground">Email</span>
                 <a
-                  href={`mailto:${viewing.email}`}
+                  href={gmailComposeLink(viewing.email)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="col-span-2 inline-flex items-center gap-1.5 font-medium text-primary hover:underline"
                 >
                   <Mail className="h-3.5 w-3.5" />
