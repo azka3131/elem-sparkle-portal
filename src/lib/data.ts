@@ -26,24 +26,28 @@ export const HERO_SLIDES = [
     image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=80",
     title: "Selamat Datang di SD Cendekia Harapan",
     subtitle: "Cerdas, Berkarakter, Berprestasi",
+    status: "Disematkan",
   },
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80",
     title: "Belajar dengan Penuh Semangat",
     subtitle: "Lingkungan ramah anak yang menumbuhkan rasa ingin tahu.",
+    status: "Dipublikasikan",
   },
   {
     id: 3,
     image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1920&q=80",
     title: "Membangun Generasi Masa Depan",
     subtitle: "Pendidikan karakter berlandaskan nilai luhur bangsa.",
+    status: "Disematkan",
   },
   {
     id: 4,
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80",
     title: "Pendaftaran Siswa Baru Dibuka",
     subtitle: "Bergabunglah bersama keluarga besar kami tahun ini.",
+    status: "Dipublikasikan",
   },
 ];
 
@@ -147,6 +151,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80",
     author: "Humas Sekolah",
     content: lorem("Olimpiade Sains Tingkat Provinsi"),
+    status: "Disematkan",
   },
   {
     id: 2,
@@ -160,6 +165,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1600&q=80",
     author: "Tim Perpustakaan",
     content: lorem("Pekan Literasi & Festival Buku Anak"),
+    status: "Dipublikasikan",
   },
   {
     id: 3,
@@ -178,6 +184,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "/attachments/Panduan-PPDB-2026.docx" },
       { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
     ],
+    status: "Disematkan",
   },
   {
     id: 4,
@@ -191,6 +198,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1605007493699-af65834f8a00?w=1600&q=80",
     author: "Wali Kelas 5",
     content: lorem("Kunjungan Edukatif ke Museum Nasional"),
+    status: "Dipublikasikan",
   },
   {
     id: 5,
@@ -203,6 +211,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&q=80",
     author: "Tim Adiwiyata",
     content: lorem("Program Sekolah Hijau"),
+    status: "Disembunyikan",
   },
   {
     id: 6,
@@ -216,6 +225,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=80",
     author: "Komite Sekolah",
     content: lorem("Workshop Parenting Bersama Psikolog Anak"),
+    status: "Diarsipkan",
   },
   {
     id: 7,
@@ -233,6 +243,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Surat-Edaran-Libur-Hari-Raya.pdf", size: "186 KB", kind: "pdf", url: "/attachments/Surat-Edaran-Libur-Hari-Raya.pdf" },
       { name: "Materi-Pembelajaran-Daring.zip", size: "4.2 MB", kind: "zip", url: "/attachments/Materi-Pembelajaran-Daring.zip" },
     ],
+    status: "Dipublikasikan",
   },
   {
     id: 8,
@@ -250,6 +261,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Undangan-Rapat-Orang-Tua.pdf", size: "92 KB", kind: "pdf", url: "/attachments/Undangan-Rapat-Orang-Tua.pdf" },
       { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "/attachments/Agenda-Rapat-Semester-Genap.doc" },
     ],
+    status: "Dipublikasikan",
   },
   {
     id: 9,
@@ -267,6 +279,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Jadwal-UAS-Genap-2026.pdf", size: "164 KB", kind: "pdf", url: "/attachments/Surat-Edaran-Libur-Hari-Raya.pdf" },
       { name: "Kisi-Kisi-UAS.xlsx", size: "78 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
     ],
+    status: "Disembunyikan",
   },
   {
     id: 10,
@@ -280,6 +293,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80",
     author: "Unit Kesehatan Sekolah",
     content: lorem("Vaksinasi & Pemeriksaan Kesehatan Berkala"),
+    status: "Diarsipkan",
   },
 ];
 
