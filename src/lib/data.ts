@@ -90,6 +90,22 @@ export const HISTORY = [
 
 export type NewsType = "news" | "announcement";
 export type AttachmentKind = "pdf" | "doc" | "docx" | "xls" | "xlsx" | "zip";
+/**
+ * Visibility status untuk berita & pengumuman.
+ * Disiapkan agar mudah dipetakan ke kolom `status` pada MySQL dan dikelola
+ * melalui Laravel REST API di masa depan.
+ */
+export type ContentStatus =
+  | "Disematkan"
+  | "Dipublikasikan"
+  | "Disembunyikan"
+  | "Diarsipkan";
+export const CONTENT_STATUSES: ContentStatus[] = [
+  "Disematkan",
+  "Dipublikasikan",
+  "Disembunyikan",
+  "Diarsipkan",
+];
 export interface Attachment {
   name: string;
   size: string;
@@ -108,6 +124,7 @@ export interface NewsArticle {
   author: string;
   content: string[];
   attachments?: Attachment[];
+  status: ContentStatus;
 }
 
 const lorem = (topic: string): string[] => [
@@ -130,6 +147,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80",
     author: "Humas Sekolah",
     content: lorem("Olimpiade Sains Tingkat Provinsi"),
+    status: "Disematkan",
   },
   {
     id: 2,
@@ -143,6 +161,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1600&q=80",
     author: "Tim Perpustakaan",
     content: lorem("Pekan Literasi & Festival Buku Anak"),
+    status: "Dipublikasikan",
   },
   {
     id: 3,
@@ -161,6 +180,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Panduan-PPDB-2026.docx", size: "112 KB", kind: "docx", url: "/attachments/Panduan-PPDB-2026.docx" },
       { name: "Jadwal-Seleksi-PPDB.xlsx", size: "34 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
     ],
+    status: "Disematkan",
   },
   {
     id: 4,
@@ -174,6 +194,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1605007493699-af65834f8a00?w=1600&q=80",
     author: "Wali Kelas 5",
     content: lorem("Kunjungan Edukatif ke Museum Nasional"),
+    status: "Dipublikasikan",
   },
   {
     id: 5,
@@ -186,6 +207,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1600&q=80",
     author: "Tim Adiwiyata",
     content: lorem("Program Sekolah Hijau"),
+    status: "Disembunyikan",
   },
   {
     id: 6,
@@ -199,6 +221,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1577896851231-70ef18881754?w=1600&q=80",
     author: "Komite Sekolah",
     content: lorem("Workshop Parenting Bersama Psikolog Anak"),
+    status: "Diarsipkan",
   },
   {
     id: 7,
@@ -216,6 +239,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Surat-Edaran-Libur-Hari-Raya.pdf", size: "186 KB", kind: "pdf", url: "/attachments/Surat-Edaran-Libur-Hari-Raya.pdf" },
       { name: "Materi-Pembelajaran-Daring.zip", size: "4.2 MB", kind: "zip", url: "/attachments/Materi-Pembelajaran-Daring.zip" },
     ],
+    status: "Dipublikasikan",
   },
   {
     id: 8,
@@ -233,6 +257,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Undangan-Rapat-Orang-Tua.pdf", size: "92 KB", kind: "pdf", url: "/attachments/Undangan-Rapat-Orang-Tua.pdf" },
       { name: "Agenda-Rapat-Semester-Genap.doc", size: "58 KB", kind: "doc", url: "/attachments/Agenda-Rapat-Semester-Genap.doc" },
     ],
+    status: "Dipublikasikan",
   },
   {
     id: 9,
@@ -250,6 +275,7 @@ const NEWS_DATA: NewsArticle[] = [
       { name: "Jadwal-UAS-Genap-2026.pdf", size: "164 KB", kind: "pdf", url: "/attachments/Surat-Edaran-Libur-Hari-Raya.pdf" },
       { name: "Kisi-Kisi-UAS.xlsx", size: "78 KB", kind: "xlsx", url: "/attachments/Jadwal-Seleksi-PPDB.xlsx" },
     ],
+    status: "Disembunyikan",
   },
   {
     id: 10,
@@ -263,6 +289,7 @@ const NEWS_DATA: NewsArticle[] = [
     image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80",
     author: "Unit Kesehatan Sekolah",
     content: lorem("Vaksinasi & Pemeriksaan Kesehatan Berkala"),
+    status: "Diarsipkan",
   },
 ];
 
@@ -270,6 +297,28 @@ const NEWS_DATA: NewsArticle[] = [
 export const NEWS = NEWS_DATA;
 export const SCHOOL_NEWS = NEWS_DATA.filter((n) => n.type === "news");
 export const ANNOUNCEMENTS = NEWS_DATA.filter((n) => n.type === "announcement");
+
+/**
+ * Urutkan konten agar `Disematkan` selalu berada di atas `Dipublikasikan`.
+ * Hanya kedua status ini yang boleh tampil di halaman publik.
+ */
+export function sortPinnedFirst<T extends { status: ContentStatus }>(items: T[]): T[] {
+  const order: Record<ContentStatus, number> = {
+    Disematkan: 0,
+    Dipublikasikan: 1,
+    Disembunyikan: 2,
+    Diarsipkan: 3,
+  };
+  return [...items].sort((a, b) => order[a.status] - order[b.status]);
+}
+/** Berita yang tampil di website publik (Disematkan + Dipublikasikan). */
+export const PUBLIC_SCHOOL_NEWS = sortPinnedFirst(
+  SCHOOL_NEWS.filter((n) => n.status === "Disematkan" || n.status === "Dipublikasikan"),
+);
+/** Pengumuman yang tampil di website publik (Disematkan + Dipublikasikan). */
+export const PUBLIC_ANNOUNCEMENTS = sortPinnedFirst(
+  ANNOUNCEMENTS.filter((n) => n.status === "Disematkan" || n.status === "Dipublikasikan"),
+);
 
 export function findNews(slug: string): NewsArticle | undefined {
   return NEWS_DATA.find((n) => n.slug === slug);

@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { HeroSlider } from "@/components/HeroSlider";
 import { toast } from "sonner";
-import { ACHIEVEMENTS, FACILITIES, HERO_SLIDES, SCHOOL_NEWS, STATS, SCHOOL, PRINCIPAL } from "@/lib/data";
+import { ACHIEVEMENTS, FACILITIES, HERO_SLIDES, PUBLIC_SCHOOL_NEWS, STATS, SCHOOL, PRINCIPAL } from "@/lib/data";
 import { Quote } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -115,7 +115,7 @@ function Home() {
           link={{ to: "/news/school", label: "Lihat semua berita" }}
         />
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {SCHOOL_NEWS.slice(0, 3).map((n) => (
+          {PUBLIC_SCHOOL_NEWS.slice(0, 3).map((n) => (
             <Card
               key={n.id}
               className="group overflow-hidden border-border/60 pt-0 transition-shadow hover:shadow-[var(--shadow-card)]"
