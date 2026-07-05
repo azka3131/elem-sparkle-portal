@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sending, setSending] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
@@ -37,7 +37,7 @@ function Home() {
       toast.success("Pesan terkirim", {
         description: "Terima kasih, tim kami akan menghubungi Anda secepatnya.",
       });
-      setForm({ name: "", phone: "", message: "" });
+      setForm({ name: "", email: "", phone: "", message: "" });
       setSending(false);
     }, 600);
   }
@@ -262,6 +262,17 @@ function Home() {
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       placeholder="Nama Anda"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="contact-email">Email Address</Label>
+                    <Input
+                      id="contact-email"
+                      required
+                      type="email"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="example@email.com"
                     />
                   </div>
                   <div className="space-y-2">
