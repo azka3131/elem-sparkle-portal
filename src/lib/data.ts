@@ -298,6 +298,28 @@ export const NEWS = NEWS_DATA;
 export const SCHOOL_NEWS = NEWS_DATA.filter((n) => n.type === "news");
 export const ANNOUNCEMENTS = NEWS_DATA.filter((n) => n.type === "announcement");
 
+/**
+ * Urutkan konten agar `Disematkan` selalu berada di atas `Dipublikasikan`.
+ * Hanya kedua status ini yang boleh tampil di halaman publik.
+ */
+export function sortPinnedFirst<T extends { status: ContentStatus }>(items: T[]): T[] {
+  const order: Record<ContentStatus, number> = {
+    Disematkan: 0,
+    Dipublikasikan: 1,
+    Disembunyikan: 2,
+    Diarsipkan: 3,
+  };
+  return [...items].sort((a, b) => order[a.status] - order[b.status]);
+}
+/** Berita yang tampil di website publik (Disematkan + Dipublikasikan). */
+export const PUBLIC_SCHOOL_NEWS = sortPinnedFirst(
+  SCHOOL_NEWS.filter((n) => n.status === "Disematkan" || n.status === "Dipublikasikan"),
+);
+/** Pengumuman yang tampil di website publik (Disematkan + Dipublikasikan). */
+export const PUBLIC_ANNOUNCEMENTS = sortPinnedFirst(
+  ANNOUNCEMENTS.filter((n) => n.status === "Disematkan" || n.status === "Dipublikasikan"),
+);
+
 export function findNews(slug: string): NewsArticle | undefined {
   return NEWS_DATA.find((n) => n.slug === slug);
 }
