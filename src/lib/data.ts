@@ -26,28 +26,24 @@ export const HERO_SLIDES = [
     image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1920&q=80",
     title: "Selamat Datang di SD Cendekia Harapan",
     subtitle: "Cerdas, Berkarakter, Berprestasi",
-    status: "Disematkan",
   },
   {
     id: 2,
     image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1920&q=80",
     title: "Belajar dengan Penuh Semangat",
     subtitle: "Lingkungan ramah anak yang menumbuhkan rasa ingin tahu.",
-    status: "Dipublikasikan",
   },
   {
     id: 3,
     image: "https://images.unsplash.com/photo-1497486751825-1233686d5d80?w=1920&q=80",
     title: "Membangun Generasi Masa Depan",
     subtitle: "Pendidikan karakter berlandaskan nilai luhur bangsa.",
-    status: "Disematkan",
   },
   {
     id: 4,
     image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1920&q=80",
     title: "Pendaftaran Siswa Baru Dibuka",
     subtitle: "Bergabunglah bersama keluarga besar kami tahun ini.",
-    status: "Dipublikasikan",
   },
 ];
 
