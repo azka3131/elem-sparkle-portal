@@ -90,6 +90,22 @@ export const HISTORY = [
 
 export type NewsType = "news" | "announcement";
 export type AttachmentKind = "pdf" | "doc" | "docx" | "xls" | "xlsx" | "zip";
+/**
+ * Visibility status untuk berita & pengumuman.
+ * Disiapkan agar mudah dipetakan ke kolom `status` pada MySQL dan dikelola
+ * melalui Laravel REST API di masa depan.
+ */
+export type ContentStatus =
+  | "Disematkan"
+  | "Dipublikasikan"
+  | "Disembunyikan"
+  | "Diarsipkan";
+export const CONTENT_STATUSES: ContentStatus[] = [
+  "Disematkan",
+  "Dipublikasikan",
+  "Disembunyikan",
+  "Diarsipkan",
+];
 export interface Attachment {
   name: string;
   size: string;
@@ -108,6 +124,7 @@ export interface NewsArticle {
   author: string;
   content: string[];
   attachments?: Attachment[];
+  status: ContentStatus;
 }
 
 const lorem = (topic: string): string[] => [
