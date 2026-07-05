@@ -265,6 +265,17 @@ function Home() {
                     />
                   </div>
                   <div className="space-y-2">
+                    <Label htmlFor="contact-email">Email Address</Label>
+                    <Input
+                      id="contact-email"
+                      required
+                      type="email"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      placeholder="example@email.com"
+                    />
+                  </div>
+                  <div className="space-y-2">
                     <Label htmlFor="contact-phone">Nomor Telepon</Label>
                     <Input
                       id="contact-phone"
