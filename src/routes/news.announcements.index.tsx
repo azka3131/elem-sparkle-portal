@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader } from "@/components/PageHeader";
 import { NewsGrid } from "@/components/NewsGrid";
-import { ANNOUNCEMENTS } from "@/lib/data";
+import { PUBLIC_ANNOUNCEMENTS } from "@/lib/data";
 
 export const Route = createFileRoute("/news/announcements/")({
   head: () => ({
@@ -21,7 +21,7 @@ function Announcements() {
         subtitle="Informasi resmi untuk orang tua, siswa, dan masyarakat."
       />
       <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-        <NewsGrid items={ANNOUNCEMENTS} basePath="/news/announcements" />
+        <NewsGrid items={PUBLIC_ANNOUNCEMENTS} basePath="/news/announcements" />
       </section>
     </>
   );
