@@ -27,7 +27,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
-  const [form, setForm] = useState({ name: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
   const [sending, setSending] = useState(false);
 
   function handleSubmit(e: React.FormEvent) {
@@ -37,7 +37,7 @@ function Home() {
       toast.success("Pesan terkirim", {
         description: "Terima kasih, tim kami akan menghubungi Anda secepatnya.",
       });
-      setForm({ name: "", phone: "", message: "" });
+      setForm({ name: "", email: "", phone: "", message: "" });
       setSending(false);
     }, 600);
   }
