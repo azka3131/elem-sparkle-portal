@@ -1,5 +1,16 @@
-import { type ReactNode, useState } from "react";
-import { Pencil, Trash2, Plus, Search } from "lucide-react";
+import { useMemo, useState, type ReactNode } from "react";
+import {
+  ArrowDown,
+  ArrowUp,
+  ArrowUpDown,
+  ChevronLeft,
+  ChevronRight,
+  Loader2,
+  Pencil,
+  Plus,
+  Search,
+  Trash2,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -10,14 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+import { DialogFooter } from "@/components/ui/dialog";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -35,6 +39,10 @@ export interface Column<T> {
   header: string;
   render?: (row: T) => ReactNode;
   className?: string;
+  /** Set to true to enable header click sorting on this column. */
+  sortable?: boolean;
+  /** Custom sort accessor. Defaults to row[key]. */
+  sortValue?: (row: T) => string | number;
 }
 
 interface CrudTableProps<T extends { id: string | number }> {
@@ -42,29 +50,85 @@ interface CrudTableProps<T extends { id: string | number }> {
   columns: Column<T>[];
   entityName: string;
   searchKeys?: (keyof T)[];
-  renderForm?: (item: Partial<T> | null, onClose: () => void) => ReactNode;
+  /** Render a form for Create/Edit. Called with row (null = create) and close callback. */
+  renderForm?: (item: T | null, onClose: () => void) => ReactNode;
+  /** Optional custom row actions (rendered before Edit/Delete). */
+  rowActions?: (row: T) => ReactNode;
+  loading?: boolean;
   hideActions?: boolean;
+  onDelete?: (id: string | number) => void;
+  pageSize?: number;
 }
 
+type SortState<T> = { key: keyof T | string; dir: "asc" | "desc" } | null;
+
 export function CrudTable<T extends { id: string | number }>({
-  items: initial,
+  items,
   columns,
   entityName,
   searchKeys = [],
   renderForm,
+  rowActions,
+  loading = false,
   hideActions = false,
+  onDelete,
+  pageSize = 10,
 }: CrudTableProps<T>) {
-  const [items, setItems] = useState<T[]>(initial);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState<SortState<T>>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [editing, setEditing] = useState<Partial<T> | null>(null);
+  const [editing, setEditing] = useState<T | null>(null);
   const [deleteId, setDeleteId] = useState<string | number | null>(null);
 
-  const filtered = items.filter((row) => {
-    if (!search) return true;
+  const filtered = useMemo(() => {
+    if (!search) return items;
     const q = search.toLowerCase();
-    return searchKeys.some((k) => String(row[k] ?? "").toLowerCase().includes(q));
-  });
+    return items.filter((row) =>
+      searchKeys.some((k) => String(row[k] ?? "").toLowerCase().includes(q)),
+    );
+  }, [items, search, searchKeys]);
+
+  const sorted = useMemo(() => {
+    if (!sort) return filtered;
+    const col = columns.find((c) => c.key === sort.key);
+    const accessor = col?.sortValue ?? ((r: T) => (r as Record<string, unknown>)[String(sort.key)] as string | number);
+    const copy = [...filtered];
+    copy.sort((a, b) => {
+      const av = accessor(a);
+      const bv = accessor(b);
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      if (typeof av === "number" && typeof bv === "number") return av - bv;
+      return String(av).localeCompare(String(bv), "id");
+    });
+    return sort.dir === "asc" ? copy : copy.reverse();
+  }, [filtered, sort, columns]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const start = (currentPage - 1) * pageSize;
+  const paged = sorted.slice(start, start + pageSize);
+
+  const toggleSort = (col: Column<T>) => {
+    if (!col.sortable) return;
+    setSort((s) => {
+      if (!s || s.key !== col.key) return { key: col.key, dir: "asc" };
+      if (s.dir === "asc") return { key: col.key, dir: "desc" };
+      return null;
+    });
+  };
+
+  const sortIcon = (col: Column<T>) => {
+    if (!col.sortable) return null;
+    if (!sort || sort.key !== col.key)
+      return <ArrowUpDown className="ml-1.5 inline h-3 w-3 opacity-40" />;
+    return sort.dir === "asc" ? (
+      <ArrowUp className="ml-1.5 inline h-3 w-3" />
+    ) : (
+      <ArrowDown className="ml-1.5 inline h-3 w-3" />
+    );
+  };
 
   return (
     <div className="rounded-2xl border border-border bg-card shadow-sm">
@@ -73,12 +137,15 @@ export function CrudTable<T extends { id: string | number }>({
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(1);
+            }}
             placeholder={`Cari ${entityName.toLowerCase()}…`}
             className="pl-9"
           />
         </div>
-        {!hideActions && (
+        {!hideActions && renderForm && (
           <Button
             onClick={() => {
               setEditing(null);
@@ -90,56 +157,81 @@ export function CrudTable<T extends { id: string | number }>({
           </Button>
         )}
       </div>
+
       <div className="overflow-x-auto">
         <Table>
           <TableHeader>
             <TableRow>
               {columns.map((c) => (
-                <TableHead key={String(c.key)} className={c.className}>
+                <TableHead
+                  key={String(c.key)}
+                  className={`${c.className ?? ""} ${c.sortable ? "cursor-pointer select-none" : ""}`}
+                  onClick={() => toggleSort(c)}
+                >
                   {c.header}
+                  {sortIcon(c)}
                 </TableHead>
               ))}
-              {!hideActions && <TableHead className="w-24 text-right">Aksi</TableHead>}
+              {!hideActions && <TableHead className="w-28 text-right">Aksi</TableHead>}
             </TableRow>
           </TableHeader>
           <TableBody>
-            {filtered.length === 0 ? (
+            {loading ? (
               <TableRow>
                 <TableCell
                   colSpan={columns.length + (hideActions ? 0 : 1)}
-                  className="py-10 text-center text-sm text-muted-foreground"
+                  className="py-12 text-center text-sm text-muted-foreground"
                 >
-                  Tidak ada data.
+                  <Loader2 className="mx-auto mb-2 h-5 w-5 animate-spin" />
+                  Memuat data…
+                </TableCell>
+              </TableRow>
+            ) : paged.length === 0 ? (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length + (hideActions ? 0 : 1)}
+                  className="py-12 text-center text-sm text-muted-foreground"
+                >
+                  {search
+                    ? `Tidak ada ${entityName.toLowerCase()} yang cocok dengan pencarian.`
+                    : `Belum ada ${entityName.toLowerCase()}. Klik "Tambah" untuk membuat data pertama.`}
                 </TableCell>
               </TableRow>
             ) : (
-              filtered.map((row) => (
+              paged.map((row) => (
                 <TableRow key={row.id}>
                   {columns.map((c) => (
                     <TableCell key={String(c.key)} className={c.className}>
-                      {c.render ? c.render(row) : String((row as any)[c.key] ?? "")}
+                      {c.render
+                        ? c.render(row)
+                        : String((row as Record<string, unknown>)[String(c.key)] ?? "")}
                     </TableCell>
                   ))}
                   {!hideActions && (
                     <TableCell className="text-right">
                       <div className="flex justify-end gap-1">
-                        <Button
-                          size="icon"
-                          variant="ghost"
-                          onClick={() => {
-                            setEditing(row);
-                            setDialogOpen(true);
-                          }}
-                          aria-label="Edit"
-                        >
-                          <Pencil className="h-4 w-4" />
-                        </Button>
+                        {rowActions?.(row)}
+                        {renderForm && (
+                          <Button
+                            size="icon"
+                            variant="ghost"
+                            onClick={() => {
+                              setEditing(row);
+                              setDialogOpen(true);
+                            }}
+                            aria-label="Edit"
+                            title="Edit"
+                          >
+                            <Pencil className="h-4 w-4" />
+                          </Button>
+                        )}
                         <Button
                           size="icon"
                           variant="ghost"
                           className="text-destructive hover:text-destructive"
                           onClick={() => setDeleteId(row.id)}
-                          aria-label="Delete"
+                          aria-label="Hapus"
+                          title="Hapus"
                         >
                           <Trash2 className="h-4 w-4" />
                         </Button>
@@ -153,24 +245,39 @@ export function CrudTable<T extends { id: string | number }>({
         </Table>
       </div>
 
-      {renderForm && (
-        <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-          <DialogContent className="max-w-2xl">
-            <DialogHeader>
-              <DialogTitle>
-                {editing ? `Edit ${entityName}` : `Tambah ${entityName}`}
-              </DialogTitle>
-              <DialogDescription>
-                Lengkapi data berikut. Perubahan disimpan secara lokal pada UI demo ini.
-              </DialogDescription>
-            </DialogHeader>
-            {renderForm(editing, () => {
-              setDialogOpen(false);
-              toast.success(editing ? `${entityName} diperbarui` : `${entityName} ditambahkan`);
-            })}
-          </DialogContent>
-        </Dialog>
+      {sorted.length > pageSize && (
+        <div className="flex items-center justify-between border-t border-border px-4 py-3 text-sm">
+          <div className="text-muted-foreground">
+            Menampilkan {start + 1}–{Math.min(start + pageSize, sorted.length)} dari{" "}
+            {sorted.length}
+          </div>
+          <div className="flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setPage((p) => Math.max(1, p - 1))}
+              disabled={currentPage === 1}
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <span className="min-w-[80px] text-center">
+              Hal. {currentPage} / {totalPages}
+            </span>
+            <Button
+              size="sm"
+              variant="outline"
+              onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+              disabled={currentPage === totalPages}
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       )}
+
+      {renderForm &&
+        dialogOpen &&
+        renderForm(editing, () => setDialogOpen(false))}
 
       <AlertDialog open={deleteId !== null} onOpenChange={(o) => !o && setDeleteId(null)}>
         <AlertDialogContent>
@@ -186,7 +293,7 @@ export function CrudTable<T extends { id: string | number }>({
               className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
               onClick={() => {
                 if (deleteId !== null) {
-                  setItems((s) => s.filter((i) => i.id !== deleteId));
+                  onDelete?.(deleteId);
                   toast.success(`${entityName} dihapus`);
                 }
                 setDeleteId(null);
@@ -201,7 +308,8 @@ export function CrudTable<T extends { id: string | number }>({
   );
 }
 
-export function DefaultForm({ onClose }: { item?: any; onClose: () => void }) {
+/** Fallback stub form for legacy modules while we upgrade them one-by-one. */
+export function DefaultForm({ onClose }: { item?: unknown; onClose: () => void }) {
   return (
     <div className="space-y-4">
       <p className="text-sm text-muted-foreground">
